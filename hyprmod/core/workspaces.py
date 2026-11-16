@@ -50,6 +50,7 @@ from hyprland_config import split_top_level
 
 from hyprmod.core import config
 from hyprmod.core.external import load_external_keyword_entries
+from hyprmod.i18n import N_, _
 
 WORKSPACE_RULE_KEYWORDS: tuple[str, ...] = (config.KEYWORD_WORKSPACE,)
 
@@ -165,7 +166,7 @@ def _format_gap(value: object) -> str:
 
 
 def _coerce_bool(text: str) -> bool:
-    """Best-effort Hyprlang bool — accepts the canonical token set."""
+    """Best-effort Hyprlang bool - accepts the canonical token set."""
     return text.strip().lower() in {"true", "yes", "on", "1"}
 
 
@@ -280,8 +281,8 @@ def serialize(items: list[WorkspaceRule]) -> list[str]:
 
 
 _SELECTOR_LABELS = {
-    "name": "Named workspace",
-    "special": "Special workspace",
+    "name": N_("Named workspace"),
+    "special": N_("Special workspace"),
 }
 
 
@@ -294,11 +295,11 @@ def summarize_selector(rule: WorkspaceRule) -> str:
     """
     selector = rule.workspace
     if selector.isdigit():
-        return f"Workspace {selector}"
+        return _("Workspace {selector}").format(selector=selector)
     prefix, sep, rest = selector.partition(":")
     if sep and prefix in _SELECTOR_LABELS:
-        return f"{_SELECTOR_LABELS[prefix]} “{rest}”"
-    return f"Workspace {selector}"
+        return f"{_(_SELECTOR_LABELS[prefix])} “{rest}”"
+    return _("Workspace {selector}").format(selector=selector)
 
 
 def summarize_settings(rule: WorkspaceRule) -> str:
@@ -310,31 +311,31 @@ def summarize_settings(rule: WorkspaceRule) -> str:
     """
     parts: list[str] = []
     if rule.monitor is not None:
-        parts.append(f"on {rule.monitor}")
+        parts.append(_("on {monitor}").format(monitor=rule.monitor))
     if rule.default:
-        parts.append("default")
+        parts.append(_("default"))
     if rule.persistent:
-        parts.append("persistent")
+        parts.append(_("persistent"))
     if rule.gaps_in is not None:
-        parts.append(f"gaps in {_format_gap(rule.gaps_in)}")
+        parts.append(_("gaps in {gap}").format(gap=_format_gap(rule.gaps_in)))
     if rule.gaps_out is not None:
-        parts.append(f"gaps out {_format_gap(rule.gaps_out)}")
+        parts.append(_("gaps out {gap}").format(gap=_format_gap(rule.gaps_out)))
     if rule.border_size is not None:
-        parts.append(f"border {rule.border_size}px")
+        parts.append(_("border {size}px").format(size=rule.border_size))
     if rule.border is False:
-        parts.append("no border")
+        parts.append(_("no border"))
     if rule.rounding is False:
-        parts.append("no rounding")
+        parts.append(_("no rounding"))
     if rule.shadow is False:
-        parts.append("no shadow")
+        parts.append(_("no shadow"))
     if rule.decorate is False:
-        parts.append("no decoration")
+        parts.append(_("no decoration"))
     if rule.default_name:
-        parts.append(f"name “{rule.default_name}”")
+        parts.append(_("name “{name}”").format(name=rule.default_name))
     if rule.on_created_empty:
-        parts.append(f"on first map: {rule.on_created_empty}")
+        parts.append(_("on first map: {command}").format(command=rule.on_created_empty))
     if not parts:
-        return "(no overrides)"
+        return _("(no overrides)")
     return " · ".join(parts)
 
 
@@ -357,7 +358,7 @@ def matches_workspace(rule: WorkspaceRule, ws_id: int, ws_name: str) -> bool:
     rule won't move/rename a workspace that's already open.
 
     Per-monitor (``m[N]``) selectors are inherently "the N-th workspace
-    on a monitor" — they don't pin to a stable workspace identity, so
+    on a monitor" - they don't pin to a stable workspace identity, so
     we don't attempt retroactive matching for them. Unknown selector
     shapes return ``False`` for the same reason.
     """

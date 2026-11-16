@@ -2,6 +2,7 @@
 
 from gi.repository import Adw, Gtk
 
+from hyprmod.i18n import _
 from hyprmod.ui.managed_row import make_combo_row
 from hyprmod.ui.options.base import OptionRow
 from hyprmod.ui.sources import MissingDependencyError, get_source_values
@@ -26,14 +27,14 @@ def _wrapping_label_setup(_factory, list_item):
 class ComboOptionRow(OptionRow):
     def __init__(self, option, value, on_change, on_reset, on_discard=None):
         values = option.get("values", [])
-        self._labels = [v["label"] for v in values]
+        self._labels = [_(v["label"]) for v in values]
         self._ids = [v.get("id", str(i)) for i, v in enumerate(values)]
 
         current_str = str(value) if value is not None else str(option.get("default", ""))
         selected = self._ids.index(current_str) if current_str in self._ids else 0
         row = make_combo_row(
-            option.get("label", option["key"]),
-            subtitle=option.get("description", ""),
+            _(option.get("label", option["key"])),
+            subtitle=_(option.get("description", "")),
             model=Gtk.StringList.new(self._labels),
             selected=selected,
         )
@@ -74,8 +75,8 @@ class SourceComboOptionRow(OptionRow):
         self._ids = []
 
         row = Adw.ComboRow(
-            title=option.get("label", option["key"]),
-            subtitle=option.get("description", ""),
+            title=_(option.get("label", option["key"])),
+            subtitle=_(option.get("description", "")),
         )
         row.set_enable_search(True)
         row.set_search_match_mode(Gtk.StringFilterMatchMode.SUBSTRING)
@@ -107,7 +108,7 @@ class SourceComboOptionRow(OptionRow):
             self.row.set_subtitle(str(exc))  # type: ignore[union-attr]
             self.row.set_sensitive(False)
             return
-        self._labels = [v["label"] for v in values]
+        self._labels = [_(v["label"]) for v in values]
         self._ids = [v["id"] for v in values]
 
         if self._change_handler_id is not None:

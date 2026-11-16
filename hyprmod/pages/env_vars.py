@@ -48,6 +48,7 @@ from hyprmod.core.env_vars import (
     serialize,
 )
 from hyprmod.core.ownership import SavedList
+from hyprmod.i18n import _
 from hyprmod.pages.section import SavedListSectionPage
 from hyprmod.ui import make_inline_hint, make_page_layout
 from hyprmod.ui.empty_state import EmptyState
@@ -116,11 +117,13 @@ class EnvVarsPage(SavedListSectionPage[EnvVar]):
         page_header = header or Adw.HeaderBar()
 
         add_btn = Gtk.Button(icon_name="list-add-symbolic")
-        add_btn.set_tooltip_text("Add environment variable")
+        add_btn.set_tooltip_text(_("Add environment variable"))
         add_btn.connect("clicked", lambda _b: self._on_add())
         page_header.pack_start(add_btn)
 
-        toolbar_view, _, self._content_box, self._scrolled = make_page_layout(header=page_header)
+        toolbar_view, _toolbar_view_unused, self._content_box, self._scrolled = make_page_layout(
+            header=page_header
+        )
 
         self._rebuild_list()
         return toolbar_view
@@ -135,18 +138,22 @@ class EnvVarsPage(SavedListSectionPage[EnvVar]):
 
     def _build_order_hint(self) -> Gtk.Widget:
         return make_inline_hint(
-            "Reorder entries by dragging them, "
-            "or with Alt+↑ / Alt+↓ on a focused row. "
-            "Order matters when one variable references another (e.g. ‘PATH’)."
+            _(
+                "Reorder entries by dragging them, "
+                "or with Alt+↑ / Alt+↓ on a focused row. "
+                "Order matters when one variable references another (e.g. ‘PATH’)."
+            )
         )
 
     def _build_empty_state(self) -> EmptyState:
         return EmptyState(
-            title="No Environment Variables",
+            title=_("No Environment Variables"),
             description=(
-                "Export variables to processes Hyprland spawns — toolkit "
-                "hints (QT_QPA_PLATFORM), theme overrides, scaling settings, "
-                "and so on."
+                _(
+                    "Export variables to processes Hyprland spawns - toolkit "
+                    "hints (QT_QPA_PLATFORM), theme overrides, scaling settings, "
+                    "and so on."
+                )
             ),
             icon_name=ENV_VARS_ICON,
             primary_action=("Add Variable…", self._on_add),
@@ -219,10 +226,12 @@ class EnvVarsPage(SavedListSectionPage[EnvVar]):
 
     def _build_external_hint(self) -> Gtk.Widget:
         return make_inline_hint(
-            "Variables below come from your hyprland.conf or its "
-            "sourced files. Click the edit button to override them — "
-            "your managed entry will take precedence on the next "
-            "Hyprland session."
+            _(
+                "Variables below come from your hyprland.conf or its "
+                "sourced files. Click the edit button to override them - "
+                "your managed entry will take precedence on the next "
+                "Hyprland session."
+            )
         )
 
     def _make_external_row(self, ext: ExternalEnvVar) -> Adw.ActionRow:
@@ -251,7 +260,7 @@ class EnvVarsPage(SavedListSectionPage[EnvVar]):
             # An owned entry with the same name is already in our managed
             # file — Hyprland will see ours last and use ours. Label the
             # external row so the user can see what they overrode.
-            badge = Gtk.Label(label="Overridden")
+            badge = Gtk.Label(label=_("Overridden"))
             badge.add_css_class("pending-badge")
             badge.add_css_class("pending-badge-modified")
             badge.set_valign(Gtk.Align.CENTER)
@@ -266,7 +275,7 @@ class EnvVarsPage(SavedListSectionPage[EnvVar]):
         override_btn = Gtk.Button(icon_name="document-edit-symbolic")
         override_btn.set_valign(Gtk.Align.CENTER)
         override_btn.add_css_class("flat")
-        override_btn.set_tooltip_text("Override this variable")
+        override_btn.set_tooltip_text(_("Override this variable"))
         override_btn.connect("clicked", lambda _b, e=ext: self._on_override(e))
         row.add_suffix(override_btn)
 

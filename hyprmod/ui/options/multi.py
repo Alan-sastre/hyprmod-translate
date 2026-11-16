@@ -2,6 +2,7 @@
 
 from gi.repository import Adw, Gtk
 
+from hyprmod.i18n import _, ngettext
 from hyprmod.ui.options.base import OptionRow
 from hyprmod.ui.options.combo import _wrapping_label_setup
 from hyprmod.ui.sources import MissingDependencyError, get_source_values
@@ -24,7 +25,7 @@ class MultiSourceOptionRow(OptionRow):
             self._unavailable = True
             self._all_items = {}
             row = Adw.ExpanderRow(
-                title=option.get("label", option["key"]),
+                title=_(option.get("label", option["key"])),
                 subtitle=str(exc),
             )
             row.set_sensitive(False)
@@ -35,14 +36,14 @@ class MultiSourceOptionRow(OptionRow):
 
         # Main expander row
         row = Adw.ExpanderRow(
-            title=option.get("label", option["key"]),
-            subtitle=option.get("description", ""),
+            title=_(option.get("label", option["key"])),
+            subtitle=_(option.get("description", "")),
         )
 
         super().__init__(row, option, on_change, on_reset, on_discard)
 
         # Picker row with searchable combo inside the expander
-        self._picker_row = Adw.ActionRow(title="Add option…")
+        self._picker_row = Adw.ActionRow(title=_("Add option…"))
         self._picker_row.add_css_class("option-default")
 
         self._combo = Gtk.DropDown()
@@ -74,7 +75,7 @@ class MultiSourceOptionRow(OptionRow):
         add_btn = Gtk.Button(icon_name="list-add-symbolic")
         add_btn.set_valign(Gtk.Align.CENTER)
         add_btn.add_css_class("flat")
-        add_btn.set_tooltip_text("Add selected option")
+        add_btn.set_tooltip_text(_("Add selected option"))
         add_btn.connect("clicked", self._on_add_clicked)
 
         self._picker_row.add_suffix(self._combo)
@@ -143,7 +144,7 @@ class MultiSourceOptionRow(OptionRow):
             remove_btn = Gtk.Button(icon_name="edit-clear-symbolic")
             remove_btn.set_valign(Gtk.Align.CENTER)
             remove_btn.add_css_class("flat")
-            remove_btn.set_tooltip_text("Remove")
+            remove_btn.set_tooltip_text(_("Remove"))
             remove_btn.connect("clicked", self._on_remove_clicked, item_id)
             child_row.add_suffix(remove_btn)
 
@@ -155,9 +156,13 @@ class MultiSourceOptionRow(OptionRow):
     def _update_subtitle(self):
         """Update the expander subtitle with count of selected options."""
         if self._selected:
-            self.row.set_subtitle(f"{len(self._selected)} option(s) selected")  # type: ignore[attr-defined]
+            self.row.set_subtitle(  # type: ignore[attr-defined]
+                ngettext("1 option selected", "{n} options selected", len(self._selected)).format(
+                    n=len(self._selected)
+                )
+            )
         else:
-            self.row.set_subtitle(self.option.get("description", ""))  # type: ignore[attr-defined]
+            self.row.set_subtitle(_(self.option.get("description", "")))  # type: ignore[attr-defined]
 
     def _on_add_clicked(self, _button):
         idx = self._combo.get_selected()

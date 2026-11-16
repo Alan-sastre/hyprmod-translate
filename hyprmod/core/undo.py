@@ -12,6 +12,8 @@ from typing import TYPE_CHECKING, Any
 
 from hyprland_socket import HyprlandError
 
+from hyprmod.i18n import _
+
 if TYPE_CHECKING:
     from hyprmod.window import HyprModWindow
 
@@ -51,7 +53,11 @@ class OptionChange(UndoEntry):
         try:
             success = window.app_state.apply_option_value(self.key, value, managed)
         except HyprlandError as e:
-            window.show_bug_toast(f"Failed to set {self.key} — {e}", detail=str(e), timeout=5)
+            window.show_bug_toast(
+                _("Failed to set {key}: {error}").format(key=self.key, error=e),
+                detail=str(e),
+                timeout=5,
+            )
             return False
         if success:
             opt_row = window.option_rows.get(self.key)

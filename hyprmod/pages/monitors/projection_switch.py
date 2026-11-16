@@ -3,6 +3,7 @@ from typing import Callable, cast, final
 from gi.repository import Gio, GObject, Gtk
 from hyprland_monitors.monitors import MonitorState
 
+from hyprmod.i18n import _
 from hyprmod.pages.monitors.presets import NO_PRESET
 
 
@@ -45,8 +46,8 @@ class ProjectionPresetSwitch(Gtk.Box):
 
         self._drop_down = drop_down = Gtk.DropDown(model=self._model)
         _factory = Gtk.SignalListItemFactory()
-        _ = _factory.connect("setup", self._setup_item)
-        _ = _factory.connect("bind", self._bind_item)
+        _setup_handler = _factory.connect("setup", self._setup_item)
+        _bind_handler = _factory.connect("bind", self._bind_item)
         drop_down.set_factory(_factory)
 
         _active_pos = self._position_of(active_key)
@@ -57,7 +58,7 @@ class ProjectionPresetSwitch(Gtk.Box):
         # Connect after restoring the selection so it isn't reported as a user change.
         self._selected_handler = drop_down.connect("notify::selected", self._on_selected)
 
-        label = Gtk.Label(label="Projection Presets", xalign=0)
+        label = Gtk.Label(label=_("Projection Presets"), xalign=0)
         label.add_css_class("heading")
         self.append(label)
         self.append(drop_down)
@@ -94,15 +95,33 @@ class ProjectionPresetSwitch(Gtk.Box):
 
     def _build_presets(self):
         if len(self._monitors) <= 1:
-            self._model.append(Preset("single", "Single Monitor", "Only one monitor is connected."))
+            self._model.append(
+                Preset(
+                    "single",
+                    _("Single Monitor"),
+                    _("Only one monitor is connected."),
+                )
+            )
 
-        self._model.append(Preset(NO_PRESET, "-", "No preset selected."))
-        self._model.append(Preset("extend", "Extend", "Extend the display across all monitors."))
-        self._model.append(Preset("mirror", "Mirror", "Mirror the display across all monitors."))
+        self._model.append(Preset(NO_PRESET, "-", _("No preset selected.")))
+        self._model.append(
+            Preset(
+                "extend",
+                _("Extend"),
+                _("Extend the display across all monitors."),
+            )
+        )
+        self._model.append(
+            Preset(
+                "mirror",
+                _("Mirror"),
+                _("Mirror the display across all monitors."),
+            )
+        )
 
         for monitor in self._monitors:
             preset_name = f"{monitor.make} {monitor.model}"
-            preset_description = f"Display only on {monitor.name}"
+            preset_description = _("Display only on {monitor}").format(monitor=monitor.name)
             self._model.append(Preset(f"only:{monitor.name}", preset_name, preset_description))
 
     def _on_selected(self, drop_down: Gtk.DropDown, _pspec: GObject.ParamSpec) -> None:

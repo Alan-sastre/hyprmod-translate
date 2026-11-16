@@ -17,6 +17,7 @@ from hyprmod.core.plugins import (
     load_external_plugins,
     parse_plugin_options,
 )
+from hyprmod.i18n import _, ngettext
 from hyprmod.pages.section import SavedListSectionPage
 from hyprmod.ui import make_page_layout, try_with_toast
 from hyprmod.ui.empty_state import EmptyState
@@ -81,11 +82,13 @@ class PluginsPage(SavedListSectionPage[PluginSetting]):
         page_header = header or Adw.HeaderBar()
 
         add_btn = Gtk.Button(icon_name="list-add-symbolic")
-        add_btn.set_tooltip_text("Add plugin setting")
+        add_btn.set_tooltip_text(_("Add plugin setting"))
         add_btn.connect("clicked", lambda _b: self._on_add())
         page_header.pack_start(add_btn)
 
-        toolbar_view, _, self._content_box, self._scrolled = make_page_layout(header=page_header)
+        toolbar_view, _toolbar_view_unused, self._content_box, self._scrolled = make_page_layout(
+            header=page_header
+        )
 
         self._rebuild_list()
         return toolbar_view
@@ -104,8 +107,8 @@ class PluginsPage(SavedListSectionPage[PluginSetting]):
 
     def _build_empty_state(self) -> EmptyState:
         return EmptyState(
-            title="No Custom Plugins",
-            description="Add arbitrary settings for unsupported plugins.",
+            title=_("No Custom Plugins"),
+            description=_("Add arbitrary settings for unsupported plugins."),
             icon_name=PLUGINS_ICON,
         )
 
@@ -115,7 +118,7 @@ class PluginsPage(SavedListSectionPage[PluginSetting]):
         any_not_loaded = False
 
         if supported:
-            supported_group = Adw.PreferencesGroup(title="Supported Plugins")
+            supported_group = Adw.PreferencesGroup(title=_("Supported Plugins"))
             for schema_group in supported:
                 plugin_keys = []
                 main_toggle_key = None
@@ -150,14 +153,15 @@ class PluginsPage(SavedListSectionPage[PluginSetting]):
 
                 managed_count = sum(1 for k in plugin_keys if is_managed(k))
                 if managed_count > 0:
-                    plural = "s" if managed_count > 1 else ""
-                    status_text += f" • {managed_count} custom setting{plural}"
+                    status_text += " • " + ngettext(
+                        "1 custom setting", "{n} custom settings", managed_count
+                    ).format(n=managed_count)
 
                 desc = schema_group.get("description")
-                subtitle = f"{status_text}\n{desc}" if desc else status_text
+                subtitle = f"{status_text}\n{_(desc)}" if desc else status_text
 
                 row = Adw.ActionRow(
-                    title=schema_group["label"],
+                    title=_(schema_group["label"]),
                     subtitle=subtitle,
                 )
                 row.set_subtitle_lines(0)
@@ -196,8 +200,8 @@ class PluginsPage(SavedListSectionPage[PluginSetting]):
             from hyprmod.ui import make_inline_hint
 
             hint = make_inline_hint(
-                "Plugins must be loaded to configure them. Add hyprpm reload to autostart?",
-                button_label="Add to Autostart",
+                _("Plugins must be loaded to configure them. Add hyprpm reload to autostart?"),
+                button_label=_("Add to Autostart"),
                 button_callback=on_add_autostart,
             )
             groups.insert(0, hint)
@@ -210,7 +214,7 @@ class PluginsPage(SavedListSectionPage[PluginSetting]):
 
     def _show_supported_plugin_dialog(self, schema_group: dict):
         dialog = Adw.PreferencesDialog()
-        dialog.set_title(f"{schema_group['label']} Settings")
+        dialog.set_title(_("{name} Settings").format(name=schema_group["label"]))
         dialog.set_content_width(500)
         dialog.set_content_height(600)
 
@@ -282,10 +286,12 @@ class PluginsPage(SavedListSectionPage[PluginSetting]):
         from hyprmod.ui import make_inline_hint
 
         return make_inline_hint(
-            "Settings below come from your hyprland.conf or its "
-            "sourced files. Click the edit button to override them — "
-            "your managed entry will take precedence on the next "
-            "Hyprland session."
+            _(
+                "Settings below come from your hyprland.conf or its "
+                "sourced files. Click the edit button to override them - "
+                "your managed entry will take precedence on the next "
+                "Hyprland session."
+            )
         )
 
     def _make_external_row(self, ext: ExternalPluginSetting) -> Adw.ActionRow:
@@ -309,7 +315,7 @@ class PluginsPage(SavedListSectionPage[PluginSetting]):
         row.add_prefix(prefix)
 
         if is_overridden:
-            badge = Gtk.Label(label="Overridden")
+            badge = Gtk.Label(label=_("Overridden"))
             badge.add_css_class("pending-badge")
             badge.add_css_class("pending-badge-modified")
             badge.set_valign(Gtk.Align.CENTER)
@@ -323,7 +329,7 @@ class PluginsPage(SavedListSectionPage[PluginSetting]):
         override_btn = Gtk.Button(icon_name="document-edit-symbolic")
         override_btn.set_valign(Gtk.Align.CENTER)
         override_btn.add_css_class("flat")
-        override_btn.set_tooltip_text("Override this setting")
+        override_btn.set_tooltip_text(_("Override this setting"))
         override_btn.connect("clicked", lambda _b, e=ext: self._on_override(e))
         row.add_suffix(override_btn)
 

@@ -16,6 +16,7 @@ from gi.repository import Adw, Gtk
 
 from hyprmod.core import config, setup
 from hyprmod.core.config import display_path
+from hyprmod.i18n import _
 
 
 class OnboardingDialog(Adw.AlertDialog):
@@ -28,7 +29,7 @@ class OnboardingDialog(Adw.AlertDialog):
     """
 
     def __init__(self, *, on_setup: Callable[[], None]) -> None:
-        super().__init__(heading="Welcome to HyprMod")
+        super().__init__(heading=_("Welcome to HyprMod"))
         self._on_setup = on_setup
 
         entry = config.user_entry_path()
@@ -44,9 +45,11 @@ class OnboardingDialog(Adw.AlertDialog):
 
         intro = Gtk.Label(
             label=(
-                "HyprMod gives you a visual interface for all Hyprland settings "
-                "with live preview. Every change is applied instantly to your "
-                "running compositor."
+                _(
+                    "HyprMod gives you a visual interface for all Hyprland settings "
+                    "with live preview. Every change is applied instantly to your "
+                    "running compositor."
+                )
             ),
         )
         intro.set_wrap(True)
@@ -57,7 +60,7 @@ class OnboardingDialog(Adw.AlertDialog):
             self._feature_row(
                 "view-refresh-symbolic",
                 "Live Preview",
-                "Changes apply instantly via hyprctl — see the effect on your desktop in real time",
+                "Changes apply instantly via hyprctl - see the effect on your desktop in real time",
             )
         )
         box.append(
@@ -76,7 +79,9 @@ class OnboardingDialog(Adw.AlertDialog):
         )
 
         setup_text = Gtk.Label(
-            label=f"To get started, HyprMod needs to add one line to your {entry_name}:",
+            label=_("To get started, HyprMod needs to add one line to your {entry_name}:").format(
+                entry_name=entry_name
+            ),
         )
         setup_text.set_wrap(True)
         setup_text.set_xalign(0)
@@ -110,12 +115,12 @@ class OnboardingDialog(Adw.AlertDialog):
         row.append(img)
 
         text_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
-        title_label = Gtk.Label(label=title)
+        title_label = Gtk.Label(label=_(title))
         title_label.set_xalign(0)
         title_label.add_css_class("heading")
         text_box.append(title_label)
 
-        desc_label = Gtk.Label(label=description)
+        desc_label = Gtk.Label(label=_(description))
         desc_label.set_xalign(0)
         desc_label.set_wrap(True)
         desc_label.add_css_class("dim-label")

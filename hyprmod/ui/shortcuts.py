@@ -8,6 +8,8 @@ wires the ``win.show-help-overlay`` action.
 
 from gi.repository import Gtk
 
+from hyprmod.i18n import _
+
 # Each ``<GtkShortcutsShortcut>`` pairs an accelerator (GTK accelerator syntax)
 # with a user-facing title. Keep this list in sync with ``_setup_shortcuts`` in
 # ``window.py`` — the action registration is the source of truth, this overlay
@@ -22,51 +24,51 @@ SHORTCUTS_UI = """<?xml version="1.0" encoding="UTF-8"?>
         <property name="max-height">10</property>
         <child>
           <object class="GtkShortcutsGroup">
-            <property name="title" translatable="yes">General</property>
+            <property name="title">{general}</property>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;Control&gt;s</property>
-                <property name="title" translatable="yes">Save changes</property>
+                <property name="title">{save_changes}</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;Control&gt;z</property>
-                <property name="title" translatable="yes">Undo last change</property>
+                <property name="title">{undo}</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;Control&gt;&lt;Shift&gt;z</property>
-                <property name="title" translatable="yes">Redo change</property>
+                <property name="title">{redo}</property>
               </object>
             </child>
           </object>
         </child>
         <child>
           <object class="GtkShortcutsGroup">
-            <property name="title" translatable="yes">Search</property>
+            <property name="title">{search}</property>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;Control&gt;f</property>
-                <property name="title" translatable="yes">Search options</property>
+                <property name="title">{search_options}</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">Escape</property>
-                <property name="title" translatable="yes">Close search</property>
+                <property name="title">{close_search}</property>
               </object>
             </child>
           </object>
         </child>
         <child>
           <object class="GtkShortcutsGroup">
-            <property name="title" translatable="yes">Help</property>
+            <property name="title">{help}</property>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;Control&gt;question F1</property>
-                <property name="title" translatable="yes">Show keyboard shortcuts</property>
+                <property name="title">{show_shortcuts}</property>
               </object>
             </child>
           </object>
@@ -80,7 +82,18 @@ SHORTCUTS_UI = """<?xml version="1.0" encoding="UTF-8"?>
 
 def build_shortcuts_window() -> Gtk.ShortcutsWindow:
     """Construct the keyboard shortcuts overlay from the XML template."""
-    builder = Gtk.Builder.new_from_string(SHORTCUTS_UI, -1)
+    xml = SHORTCUTS_UI.format(
+        general=_("General"),
+        save_changes=_("Save changes"),
+        undo=_("Undo last change"),
+        redo=_("Redo change"),
+        search=_("Search"),
+        search_options=_("Search options"),
+        close_search=_("Close search"),
+        help=_("Help"),
+        show_shortcuts=_("Show keyboard shortcuts"),
+    )
+    builder = Gtk.Builder.new_from_string(xml, -1)
     window = builder.get_object("shortcuts_window")
     if not isinstance(window, Gtk.ShortcutsWindow):
         raise RuntimeError("Failed to build Gtk.ShortcutsWindow from template")

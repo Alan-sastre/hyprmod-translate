@@ -3,6 +3,7 @@
 from gi.repository import Adw, Gdk, Gtk
 from hyprland_config import Color
 
+from hyprmod.i18n import _
 from hyprmod.ui.options.base import OptionRow
 from hyprmod.ui.signals import SignalBlocker
 
@@ -63,8 +64,8 @@ def _build_gradient(colors: list[str], angle: int) -> str:
 class ColorOptionRow(OptionRow):
     def __init__(self, option, value, on_change, on_reset, on_discard=None):
         row = Adw.ActionRow(
-            title=option.get("label", option["key"]),
-            subtitle=option.get("description", ""),
+            title=_(option.get("label", option["key"])),
+            subtitle=_(option.get("description", "")),
         )
 
         self._color_button = Gtk.ColorDialogButton()
@@ -91,8 +92,8 @@ class GradientOptionRow(OptionRow):
 
     def __init__(self, option, value, on_change, on_reset, on_discard=None):
         row = Adw.ActionRow(
-            title=option.get("label", option["key"]),
-            subtitle=option.get("description", ""),
+            title=_(option.get("label", option["key"])),
+            subtitle=_(option.get("description", "")),
         )
 
         initial = value or option.get("default") or "0xffffffff"
@@ -109,7 +110,7 @@ class GradientOptionRow(OptionRow):
         )
         self._spin = Gtk.SpinButton(adjustment=adj, climb_rate=1, digits=0)
         self._spin.set_valign(Gtk.Align.CENTER)
-        self._spin.set_tooltip_text("Angle (degrees)")
+        self._spin.set_tooltip_text(_("Angle (degrees)"))
         self._spin.set_width_chars(4)
 
         # Container for color stops
@@ -132,7 +133,7 @@ class GradientOptionRow(OptionRow):
         # Add color button
         add_btn = Gtk.Button(icon_name="list-add-symbolic")
         add_btn.set_valign(Gtk.Align.CENTER)
-        add_btn.set_tooltip_text("Add color stop")
+        add_btn.set_tooltip_text(_("Add color stop"))
         add_btn.add_css_class("flat")
         add_btn.connect("clicked", lambda _: self._on_add_color())
         suffix_box.append(add_btn)
@@ -167,7 +168,7 @@ class GradientOptionRow(OptionRow):
 
         rm_btn = Gtk.Button(icon_name="edit-clear-symbolic")
         rm_btn.set_valign(Gtk.Align.CENTER)
-        rm_btn.set_tooltip_text("Remove color stop")
+        rm_btn.set_tooltip_text(_("Remove color stop"))
         rm_btn.add_css_class("flat")
         rm_btn.add_css_class("circular")
 

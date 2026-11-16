@@ -11,14 +11,14 @@ from hyprmod import cli
 from hyprmod.constants import APPLICATION_ID
 from hyprmod.core import config
 from hyprmod.core.setup import needs_setup, run_setup
-from hyprmod.i18n import init_i18n
+from hyprmod.i18n import N_, _, init_i18n
 from hyprmod.install import ensure_registered_silently, install_user_files, uninstall_user_files
 from hyprmod.ui import has_cairo_support, try_with_toast
 from hyprmod.ui.config_error import build_config_error_window
 from hyprmod.ui.onboarding_dialog import OnboardingDialog
 from hyprmod.window import HyprModWindow
 
-CAIRO_MISSING_BODY = (
+CAIRO_MISSING_BODY = N_(
     "PyGObject's Cairo bindings are missing, so the monitor layout, the bezier "
     "curve editor, and the animation preview will show up as empty boxes.\n\n"
     "Install them with your package manager: python-cairo on Arch, "
@@ -70,8 +70,11 @@ class HyprModApp(Adw.Application):
         # A broken install takes precedence over onboarding: stacking two
         # dialogs hides one behind the other, and setup can wait a launch.
         if not has_cairo_support():
-            dialog = Adw.AlertDialog(heading="Missing Cairo Bindings", body=CAIRO_MISSING_BODY)
-            dialog.add_response("close", "Close")
+            dialog = Adw.AlertDialog(
+                heading=_("Missing Cairo Bindings"),
+                body=_(CAIRO_MISSING_BODY),
+            )
+            dialog.add_response("close", _("Close"))
             dialog.present(win)
         # A stranded hyprland.conf is the migration banner's to fix. Adding our
         # include to the generated hyprland.lua first would bury the fact
@@ -80,7 +83,7 @@ class HyprModApp(Adw.Application):
             window = win  # locally typed for the closure below
 
             def _on_setup() -> None:
-                try_with_toast(window.show_bug_toast, "Setup failed", run_setup)
+                try_with_toast(window.show_bug_toast, _("Setup failed"), run_setup)
 
             OnboardingDialog(on_setup=_on_setup).present(win)
 

@@ -15,6 +15,7 @@ from gi.repository import Adw, Gio, GLib
 from hyprland_config import ConversionResult
 
 from hyprmod.core import config
+from hyprmod.i18n import _
 from hyprmod.ui import ShowToast
 from hyprmod.ui.lua_migration_banner import LuaMigrationBanner
 from hyprmod.ui.lua_migration_dialog import LuaMigrationDialog
@@ -78,7 +79,7 @@ class LuaMigrationController:
 
     @property
     def banner(self) -> LuaMigrationBanner:
-        """The banner widget — caller is responsible for inserting it."""
+        """The banner widget - caller is responsible for inserting it."""
         return self._banner
 
     def install_action(self, action_map: Gio.ActionMap) -> None:
@@ -173,14 +174,16 @@ class LuaMigrationController:
     def _show_restart_notice(self) -> None:
         """Tell the user a logout/login is needed for the new Lua config to take over."""
         dialog = Adw.AlertDialog(
-            heading="Lua migration complete",
+            heading=_("Lua migration complete"),
             body=(
-                "Hyprland is still running with your existing hyprland.conf — "
-                "the config language is fixed at compositor startup, so the new "
-                "hyprland.lua won't take over until you log out and log back in.\n\n"
-                "Until then, live-preview changes in HyprMod still go through "
-                "the .conf path and may behave inconsistently with the new "
-                ".lua files on disk."
+                _(
+                    "Hyprland is still running with your existing hyprland.conf - "
+                    "the config language is fixed at compositor startup, so the new "
+                    "hyprland.lua won't take over until you log out and log back in.\n\n"
+                    "Until then, live-preview changes in HyprMod still go through "
+                    "the .conf path and may behave inconsistently with the new "
+                    ".lua files on disk."
+                )
             ),
         )
         dialog.add_response("ok", "Got it")
@@ -190,10 +193,12 @@ class LuaMigrationController:
     def _show_recovered_notice(self) -> None:
         """Confirm the recovery, then rebuild the window on the migrated config."""
         dialog = Adw.AlertDialog(
-            heading="Configuration recovered",
+            heading=_("Configuration recovered"),
             body=(
-                "hyprland.lua now holds your migrated configuration. HyprMod "
-                "reloads Hyprland and reopens to pick it up."
+                _(
+                    "hyprland.lua now holds your migrated configuration. HyprMod "
+                    "reloads Hyprland and reopens to pick it up."
+                )
             ),
         )
         dialog.add_response("ok", "Reload")

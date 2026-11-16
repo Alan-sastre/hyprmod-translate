@@ -12,6 +12,7 @@ from pathlib import Path
 from gi.repository import Adw, Gtk
 
 from hyprmod.core import deprecations
+from hyprmod.i18n import _
 from hyprmod.ui.dialog import SingletonDialogMixin
 from hyprmod.ui.diff import ConfigDiffWidget
 
@@ -35,18 +36,18 @@ class DeprecationDialog(SingletonDialogMixin, Adw.Dialog):
         self._scan: deprecations.ScanResult | None = None
         self._checkboxes: dict[Path, Gtk.CheckButton] = {}
 
-        self.set_title("Migrate deprecated syntax")
+        self.set_title(_("Migrate deprecated syntax"))
         self.set_content_width(720)
         self.set_content_height(580)
 
         toolbar = Adw.ToolbarView()
 
         header = Adw.HeaderBar()
-        cancel_btn = Gtk.Button(label="Cancel")
+        cancel_btn = Gtk.Button(label=_("Cancel"))
         cancel_btn.connect("clicked", lambda _b: self.close())
         header.pack_start(cancel_btn)
 
-        self._apply_btn = Gtk.Button(label="Apply selected")
+        self._apply_btn = Gtk.Button(label=_("Apply selected"))
         self._apply_btn.add_css_class("suggested-action")
         self._apply_btn.connect("clicked", self._on_apply)
         self._apply_btn.set_sensitive(False)
@@ -96,10 +97,12 @@ class DeprecationDialog(SingletonDialogMixin, Adw.Dialog):
         self._refresh_apply_state()
 
     def _build_files_group(self, scan: deprecations.ScanResult) -> None:
-        group = Adw.PreferencesGroup(title="Fixable files")
+        group = Adw.PreferencesGroup(title=_("Fixable files"))
         group.set_description(
-            "Each file is rewritten in place; a timestamped backup is "
-            "saved in a .hyprmod-backups/ directory beside it."
+            _(
+                "Each file is rewritten in place; a timestamped backup is "
+                "saved in a .hyprmod-backups/ directory beside it."
+            )
         )
 
         for plan in scan.files:
@@ -128,10 +131,12 @@ class DeprecationDialog(SingletonDialogMixin, Adw.Dialog):
         row.add_suffix(_pill(f"{rule_count} change{'' if rule_count == 1 else 's'}"))
 
         if plan.is_symlink:
-            warning = Adw.ActionRow(title="This path resolves through a symlink")
+            warning = Adw.ActionRow(title=_("This path resolves through a symlink"))
             warning.set_subtitle(
-                "Writing it will modify the symlink target, "
-                "which may live in a dotfiles repository."
+                _(
+                    "Writing it will modify the symlink target, "
+                    "which may live in a dotfiles repository."
+                )
             )
             warning.add_css_class("warning")
             row.add_row(warning)
@@ -157,9 +162,9 @@ class DeprecationDialog(SingletonDialogMixin, Adw.Dialog):
         return frame
 
     def _build_unfixable_group(self, scan: deprecations.ScanResult) -> None:
-        group = Adw.PreferencesGroup(title="Detected but not auto-fixable")
+        group = Adw.PreferencesGroup(title=_("Detected but not auto-fixable"))
         group.set_description(
-            "These deprecations need a manual edit — there's no safe automatic rewrite."
+            _("These deprecations need a manual edit - there's no safe automatic rewrite.")
         )
         for rule in scan.unfixable:
             title = rule.key or rule.message
@@ -172,7 +177,7 @@ class DeprecationDialog(SingletonDialogMixin, Adw.Dialog):
                 subtitle_parts.append(rule.suggestion)
             elif rule.message and rule.message != title:
                 subtitle_parts.append(rule.message)
-            row.set_subtitle(" — ".join(subtitle_parts))
+            row.set_subtitle(" - ".join(subtitle_parts))
             row.add_css_class("property")
             group.add(row)
         self._content_box.append(group)
@@ -182,8 +187,8 @@ class DeprecationDialog(SingletonDialogMixin, Adw.Dialog):
     ) -> None:
         status = Adw.StatusPage()
         status.set_icon_name(icon)
-        status.set_title(title)
-        status.set_description(description)
+        status.set_title(_(title))
+        status.set_description(_(description))
         status.set_vexpand(True)
         self._content_box.append(status)
 

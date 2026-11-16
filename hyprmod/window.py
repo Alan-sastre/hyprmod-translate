@@ -16,6 +16,7 @@ from hyprmod.core.settings import apply_saved_config_path, open_settings
 from hyprmod.core.state import AppState
 from hyprmod.core.undo import OptionChange, PairedOptionChange, UndoManager
 from hyprmod.data.bezier_data import get_curve_store
+from hyprmod.i18n import _
 from hyprmod.pages.animations import AnimationsPage
 from hyprmod.pages.autostart import AutostartPage
 from hyprmod.pages.binds import BindsPage
@@ -267,8 +268,9 @@ class HyprModWindow(Adw.ApplicationWindow):
 
         # Hyprland status banner
         self._hyprland_banner = Adw.Banner(
-            title="Hyprland not detected — changes will be saved to config files "
-            "but not applied live"
+            title=_(
+                "Hyprland not detected - changes will be saved to config files but not applied live"
+            )
         )
         self._hyprland_banner.set_revealed(not self._hyprland_available)
         self._main_box.append(self._hyprland_banner)
@@ -374,21 +376,21 @@ class HyprModWindow(Adw.ApplicationWindow):
 
             page = self._build_page(group)
             self._page_stack.add_named(page, group["id"])
-            self._page_titles[group["id"]] = group["label"]
+            self._page_titles[group["id"]] = _(group["label"])
 
         # SectionPage subclasses that follow the standard
         # ``(window, on_dirty_changed, push_undo, saved_sections)``
         # constructor. ``slug`` is the page-stack key, ``title`` shows in
         # the header.
         section_page_specs: list[tuple[type, str, str, str]] = [
-            (BindsPage, "_binds_page", "binds", "Keybinds"),
-            (MonitorsPage, "_monitors_page", "monitors", "Monitors"),
-            (WorkspacesPage, "_workspaces_page", "workspaces", "Workspaces"),
-            (AutostartPage, "_autostart_page", "autostart", "Autostart"),
-            (EnvVarsPage, "_env_vars_page", "env_vars", "Env Variables"),
-            (WindowRulesPage, "_window_rules_page", "window_rules", "Window Rules"),
-            (LayerRulesPage, "_layer_rules_page", "layer_rules", "Layer Rules"),
-            (PluginsPage, "_plugins_page", "plugins", "Plugin Settings"),
+            (BindsPage, "_binds_page", "binds", _("Keybinds")),
+            (MonitorsPage, "_monitors_page", "monitors", _("Monitors")),
+            (WorkspacesPage, "_workspaces_page", "workspaces", _("Workspaces")),
+            (AutostartPage, "_autostart_page", "autostart", _("Autostart")),
+            (EnvVarsPage, "_env_vars_page", "env_vars", _("Env Variables")),
+            (WindowRulesPage, "_window_rules_page", "window_rules", _("Window Rules")),
+            (LayerRulesPage, "_layer_rules_page", "layer_rules", _("Layer Rules")),
+            (PluginsPage, "_plugins_page", "plugins", _("Plugin Settings")),
         ]
         for cls, attr, slug, title in section_page_specs:
             page = cls(
@@ -410,10 +412,10 @@ class HyprModWindow(Adw.ApplicationWindow):
         # behind a ViewSwitcher, registering their option rows via
         # ``build_schema_group_widgets`` during ``build()``.
         standalone_page_specs: list[tuple[type, str, str, str]] = [
-            (LayoutsPage, "_layouts_page", "layouts", "Layouts"),
-            (ProfilesPage, "_profiles_page", "profiles", "Profiles"),
-            (PendingChangesPage, "_pending_page", "pending", "Pending Changes"),
-            (SettingsPage, "_settings_page", "settings", "Settings"),
+            (LayoutsPage, "_layouts_page", "layouts", _("Layouts")),
+            (ProfilesPage, "_profiles_page", "profiles", _("Profiles")),
+            (PendingChangesPage, "_pending_page", "pending", _("Pending Changes")),
+            (SettingsPage, "_settings_page", "settings", _("Settings")),
         ]
         for cls, attr, slug, title in standalone_page_specs:
             page = cls(self)
@@ -429,11 +431,11 @@ class HyprModWindow(Adw.ApplicationWindow):
 
     def _build_search_page(self):
         """Build the search results page in the content stack."""
-        toolbar, _, self._search_content_box, _ = make_page_layout(
-            header=self._make_page_header("Search Results")
+        toolbar, _toolbar_unused, self._search_content_box, _fourth_unused = make_page_layout(
+            header=self._make_page_header(_("Search Results"))
         )
         self._page_stack.add_named(toolbar, "search")
-        self._page_titles["search"] = "Search Results"
+        self._page_titles["search"] = _("Search Results")
 
     def _make_page_header(self, title: str, *, with_pending_chip: bool = True) -> Adw.HeaderBar:
         """Create a content page header with menu button.
@@ -451,18 +453,18 @@ class HyprModWindow(Adw.ApplicationWindow):
 
         menu = Gio.Menu()
         prefs_section = Gio.Menu()
-        prefs_section.append("Auto-save", "win.auto-save")
+        prefs_section.append(_("Auto-save"), "win.auto-save")
         menu.append_section(None, prefs_section)
 
         tools_section = Gio.Menu()
         # ``hidden-when="action-disabled"`` lets GTK hide the item
         # entirely (not just grey it out) when the controller disables
         # the action on pre-0.55 Hyprland or once the user is on Lua.
-        migrate_item = Gio.MenuItem.new("Migrate to Lua…", f"win.{LUA_MIGRATION_ACTION}")
+        migrate_item = Gio.MenuItem.new(_("Migrate to Lua…"), f"win.{LUA_MIGRATION_ACTION}")
         migrate_item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
         tools_section.append_item(migrate_item)
         deprecations_item = Gio.MenuItem.new(
-            "Review deprecated syntax…", f"win.{DEPRECATIONS_ACTION}"
+            _("Review deprecated syntax…"), f"win.{DEPRECATIONS_ACTION}"
         )
         deprecations_item.set_attribute_value(
             "hidden-when", GLib.Variant.new_string("action-disabled")
@@ -471,9 +473,9 @@ class HyprModWindow(Adw.ApplicationWindow):
         menu.append_section(None, tools_section)
 
         help_section = Gio.Menu()
-        help_section.append("Keyboard Shortcuts", "win.show-help-overlay")
-        help_section.append("Report a bug", "win.report-bug")
-        help_section.append("About HyprMod", "win.show-about")
+        help_section.append(_("Keyboard Shortcuts"), "win.show-help-overlay")
+        help_section.append(_("Report a bug"), "win.report-bug")
+        help_section.append(_("About HyprMod"), "win.show-about")
         menu.append_section(None, help_section)
 
         menu_button.set_menu_model(menu)
@@ -488,8 +490,8 @@ class HyprModWindow(Adw.ApplicationWindow):
         return header
 
     def _build_page(self, group: dict) -> Adw.ToolbarView:
-        toolbar_view, _, content_box, _ = make_page_layout(
-            header=self._make_page_header(group["label"])
+        toolbar_view, _toolbar_view_unused, content_box, _fourth_unused = make_page_layout(
+            header=self._make_page_header(_(group["label"]))
         )
 
         is_animations = group.get("id") == "animations"
@@ -530,9 +532,9 @@ class HyprModWindow(Adw.ApplicationWindow):
         """
         result = []
         for section in group.get("sections", []):
-            pref_group = Adw.PreferencesGroup(title=section.get("label", ""))
+            pref_group = Adw.PreferencesGroup(title=_(section.get("label", "")))
             if section.get("description"):
-                pref_group.set_description(section["description"])
+                pref_group.set_description(_(section["description"]))
 
             # Grey out a subsection when only its hardware is missing. The
             # whole Gestures page is already dropped when both are absent
@@ -540,9 +542,9 @@ class HyprModWindow(Adw.ApplicationWindow):
             section_id = section.get("id", "")
             reason = None
             if section_id in (INPUT_TOUCHPAD, GESTURES_TOUCHPAD) and not self._has_touchpad:
-                reason = "No touchpad detected"
+                reason = _("No touchpad detected")
             elif section_id == GESTURES_TOUCHSCREEN and not self._has_touchscreen:
-                reason = "No touchscreen detected"
+                reason = _("No touchscreen detected")
             if reason:
                 pref_group.set_description(reason)
                 pref_group.set_sensitive(False)
@@ -895,7 +897,7 @@ class HyprModWindow(Adw.ApplicationWindow):
         self._sidebar.deselect_all()
 
     def _on_search_activate(self, _entry):
-        """Enter pressed — focus the first search result row for keyboard navigation."""
+        """Enter pressed - focus the first search result row for keyboard navigation."""
         if not self._search_results:
             return
         widget = self._search_content_box.get_first_child()
@@ -1002,7 +1004,9 @@ class HyprModWindow(Adw.ApplicationWindow):
             reject()
             label = self._options_flat.get(key, {}).get("label", key)
             self.show_toast(
-                f"{label} is set in another config file. Remove it there to get the default.",
+                _(
+                    "{label} is set in another config file. Remove it there to get the default."
+                ).format(label=label),
                 timeout=5,
             )
             return
@@ -1010,7 +1014,9 @@ class HyprModWindow(Adw.ApplicationWindow):
             entry = self.app_state.set_live(key, value)
         except HyprlandError as e:
             reject()
-            self.show_bug_toast(f"Failed to set {key} — {e}", detail=str(e), timeout=5)
+            self.show_bug_toast(
+                _("Failed to set {key}: {error}").format(key=key, error=e), detail=str(e), timeout=5
+            )
             return
         if entry is None:
             reject()
@@ -1037,7 +1043,11 @@ class HyprModWindow(Adw.ApplicationWindow):
             except HyprlandError as e:
                 if opt_row:
                     opt_row.flash_error()
-                self.show_bug_toast(f"Failed to set {key} — {e}", detail=str(e), timeout=5)
+                self.show_bug_toast(
+                    _("Failed to set {key}: {error}").format(key=key, error=e),
+                    detail=str(e),
+                    timeout=5,
+                )
                 continue
             if entry is not None:
                 entries.append(entry)
@@ -1061,7 +1071,7 @@ class HyprModWindow(Adw.ApplicationWindow):
             self._refresh_group_visibility()
 
     def _on_option_reset(self, key: str, _default_value):
-        """Remove override — preview the fallback value and mark pending."""
+        """Remove override - preview the fallback value and mark pending."""
         if key not in self._option_rows:
             return
 
@@ -1074,7 +1084,7 @@ class HyprModWindow(Adw.ApplicationWindow):
             self._schedule_auto_save()
 
     def discard_option(self, key: str):
-        """Discard changes on a single option — revert to saved state."""
+        """Discard changes on a single option - revert to saved state."""
         state = self.app_state.get(key)
         if state and state.is_dirty:
             self._undo.push(
@@ -1321,7 +1331,7 @@ class HyprModWindow(Adw.ApplicationWindow):
             )
 
     def save(self, *, update_active_profile: bool = True):
-        """Public save API — performs save and shows banner animation."""
+        """Public save API - performs save and shows banner animation."""
         self._perform_save(update_active_profile=update_active_profile)
         self._banner.show_saved()
 

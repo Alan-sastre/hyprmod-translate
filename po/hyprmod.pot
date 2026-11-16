@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hyprmod 0.6.0\n"
 "Report-Msgid-Bugs-To: https://github.com/BlueManCZ/hyprmod/issues\n"
-"POT-Creation-Date: 2026-11-16 10:17-0500\n"
+"POT-Creation-Date: 2026-11-16 14:36-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,3 +15,2809 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: hyprmod/binds/dialog.py:64
+msgid "Pick a button…"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:66
+msgid "Custom…"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:82
+msgid "Workspace 1"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:83
+msgid "Workspace 2"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:84
+msgid "Workspace 3"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:85
+msgid "Workspace 4"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:86
+msgid "Workspace 5"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:87
+msgid "Workspace 6"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:88
+msgid "Workspace 7"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:89
+msgid "Workspace 8"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:90
+msgid "Workspace 9"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:91
+msgid "Workspace 10"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:92
+msgid "Next workspace"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:93
+msgid "Previous workspace"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:94
+msgid "Last visited"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:95
+msgid "First empty"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:96
+msgid "Special (scratchpad)"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:102
+msgid "Full"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:102 hyprmod/core/window_rules/_model.py:328
+msgid "Maximize"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:105
+msgid "Left"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:106
+msgid "Down"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:107
+msgid "Up"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:108
+msgid "Right"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:111 hyprmod/binds/dispatchers.py:49
+msgid "Forward"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:111 hyprmod/binds/dispatchers.py:48
+msgid "Back"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:114 hyprmod/ui/workspace_rule_dialog.py:332
+msgid "On"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:115 hyprmod/ui/workspace_rule_dialog.py:332
+msgid "Off"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:116
+msgid "Toggle"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:119
+msgid "By amount"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:119
+msgid "To exact size"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:183 hyprmod/binds/dialog.py:314
+msgid "Argument"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:192 hyprmod/core/window_rules/_model.py:366
+msgid "Width"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:194 hyprmod/core/window_rules/_model.py:375
+msgid "Height"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:227 hyprmod/ui/autostart_edit_dialog.py:74
+#: hyprmod/ui/workspace_rule_dialog.py:271
+msgid "Command"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:239 hyprmod/ui/autostart_edit_dialog.py:91
+msgid "Pick from installed apps"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:251 hyprmod/core/window_rules/_model.py:337
+#: hyprmod/ui/workspace_rule_dialog.py:193
+msgid "Workspace"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:252
+msgid "Custom value"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:309 hyprmod/ui/layer_rule_dialog.py:163
+#: hyprmod/ui/window_rule_dialog.py:180
+msgid "Name (optional)"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:385
+msgid "Add Keybind"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:385
+msgid "Edit Keybind"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:394 hyprmod/binds/dialog.py:629
+#: hyprmod/ui/autostart_edit_dialog.py:56 hyprmod/ui/deprecation_dialog.py:46
+#: hyprmod/ui/env_var_edit_dialog.py:90 hyprmod/ui/layer_rule_dialog.py:111
+#: hyprmod/ui/lua_migration_dialog.py:48
+#: hyprmod/ui/plugin_setting_edit_dialog.py:39
+#: hyprmod/ui/window_rule_dialog.py:125 hyprmod/ui/workspace_rule_dialog.py:140
+msgid "Cancel"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:398 hyprmod/ui/autostart_edit_dialog.py:60
+#: hyprmod/ui/bezier_editor.py:263 hyprmod/ui/env_var_edit_dialog.py:94
+#: hyprmod/ui/layer_rule_dialog.py:115
+#: hyprmod/ui/plugin_setting_edit_dialog.py:43
+#: hyprmod/ui/window_rule_dialog.py:129 hyprmod/ui/workspace_rule_dialog.py:144
+msgid "Apply"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:415 hyprmod/binds/dialog.py:453
+msgid "Trigger"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:423 hyprmod/binds/dialog.py:892
+#: hyprmod/core/window_rules/_model.py:536 hyprmod/ui/window_rule_dialog.py:766
+msgid "Action"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:430 hyprmod/pages/monitors/card.py:414
+#: hyprmod/ui/sidebar.py:224
+msgid "Advanced"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:454
+msgid "How this binding is activated"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:460 hyprmod/binds/dialog.py:508
+msgid "Key combination"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:461 hyprmod/binds/dialog.py:592
+msgid "Mouse button"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:508 hyprmod/binds/dispatchers.py:172
+msgid "Mouse Button"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:509
+msgid "Click to record"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:509 hyprmod/binds/dialog.py:535
+msgid "Shortcut"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:541 hyprmod/binds/dialog.py:642
+#: hyprmod/binds/dialog.py:665
+msgid "Record"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:550
+msgid "Manual Edit"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:584
+msgid "Key"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:608
+msgid "Custom button (e.g. mouse:277)"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:626
+msgid "Click any mouse button…"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:626
+msgid "Press a key combination…"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:639
+#, python-brace-format
+msgid "Couldn't start capture - {error}"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:689
+#, python-brace-format
+msgid "Couldn't leave capture mode: {error}. Close this dialog to retry."
+msgstr ""
+
+#: hyprmod/binds/dialog.py:878
+msgid "Category"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:992 hyprmod/binds/dialog.py:995
+msgid "Parameters"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:1011
+msgid "Bind type"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:1012
+msgid "Normal for most keybinds"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:1049
+msgid "Duplicate keybind"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:1051
+#, python-brace-format
+msgid ""
+"This key combination is already used by:\n"
+"{detail}\n"
+"\n"
+"Hyprland will trigger all matching binds."
+msgstr ""
+
+#: hyprmod/binds/dialog.py:1054
+msgid "Add Anyway"
+msgstr ""
+
+#: hyprmod/binds/dialog.py:1055
+msgid "Go Back"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:24
+msgid "Normal"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:24
+msgid "Triggers on key press"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:25
+msgid "Repeat"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:25
+msgid "Repeats while held (volume, resize)"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:26
+msgid "Mouse"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:26
+msgid "Mouse button bind (move/resize)"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:27
+msgid "Locked"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:27
+msgid "Works even when screen is locked"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:28
+msgid "Release"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:28
+msgid "Triggers on key release"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:29
+msgid "Non-consuming"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:29
+msgid "Key event passes through to windows"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:45
+msgid "Left button"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:46
+msgid "Right button"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:47
+msgid "Middle button"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:75 hyprmod/binds/dispatchers.py:157
+msgid "Move window"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:76 hyprmod/binds/dispatchers.py:163
+msgid "Resize window"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:109
+msgid "Launch Application"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:112
+msgid "Run command"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:113
+msgid "Run raw command"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:118 hyprmod/ui/sidebar.py:210
+msgid "Window Management"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:121
+msgid "Close window"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:122
+msgid "Force kill window"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:123
+msgid "Toggle floating"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:124
+msgid "Toggle fullscreen"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:125
+msgid "Pin window"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:126
+msgid "Center window"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:127
+msgid "Toggle pseudo-tiling"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:128
+msgid "Layout message"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:133
+msgid "Workspace Navigation"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:136
+msgid "Switch workspace"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:138
+msgid "Move window to workspace"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:142
+msgid "Move window silently"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:146
+msgid "Toggle scratchpad"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:153
+msgid "Focus and Move Windows"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:156
+msgid "Move focus"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:158
+msgid "Swap window"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:160
+msgid "Move window or group"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:164
+msgid "Cycle focus next"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:165
+msgid "Swap with next"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:166
+msgid "Focus last window"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:167
+msgid "Focus urgent/last"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:183
+msgid "Window Grouping"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:186
+msgid "Toggle group"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:188
+msgid "Cycle group member"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:191
+msgid "Remove from group"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:192
+msgid "Move into group"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:193
+msgid "Reorder in group"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:194
+msgid "Lock all groups"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:195
+msgid "Lock active group"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:197
+msgid "Deny window from group"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:204
+msgid "Monitor Control"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:207
+msgid "Focus monitor"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:209
+msgid "Move workspace to monitor"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:213
+msgid "Move specific workspace to monitor"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:217
+msgid "Swap workspaces between monitors"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:221
+msgid "Focus workspace on current monitor"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:224
+msgid "Screen on/off"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:229
+msgid "Session"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:232
+msgid "Exit Hyprland"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:233
+msgid "Pass key to window"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:234
+msgid "Global shortcut"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:235
+msgid "Enter submap"
+msgstr ""
+
+#: hyprmod/binds/dispatchers.py:240
+msgid "Other"
+msgstr ""
+
+#: hyprmod/cli.py:76
+msgid "Manage Hyprland configuration profiles."
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:312
+msgid "Blur background"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:313
+msgid "Apply backdrop blur behind this layer surface (e.g. waybar, rofi)."
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:317
+msgid "Blur popups"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:318
+msgid "Also blur popup surfaces spawned above this layer."
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:322
+msgid "Dim everything else"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:324
+msgid ""
+"Dim the background while this surface is mapped. Typical for app launchers "
+"like rofi or wofi."
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:330 hyprmod/core/window_rules/_model.py:475
+msgid "No animations"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:331
+msgid "Disable open/close animations for this surface."
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:335
+msgid "Xray (see-through blur)"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:337
+msgid ""
+"Make blur look through other windows instead of blurring them. Overrides "
+"‘decoration:blur:xray’ for this surface."
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:343
+msgid "Exclude from screen share"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:345
+msgid ""
+"Hide this surface from screen-sharing captures. Useful for notification "
+"daemons or password prompts."
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:351
+msgid "Ignore alpha below threshold"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:352
+msgid "Treat pixels below this alpha as not present when computing blur."
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:355
+msgid "Threshold"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:367 hyprmod/pages/animations.py:703
+msgid "Animation style"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:368
+msgid "Override the open/close animation for this surface."
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:371 hyprmod/pages/animations.py:702
+msgid "Style"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:374
+msgid ""
+"One of: slide, popin, fade, none. (Style names depend on Hyprland version.)"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:381
+msgid "Render order"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:383
+msgid ""
+"Sort key within a layer; surfaces with higher values render on top. Useful "
+"when two surfaces share a level."
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:388
+msgid "Order"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:400
+msgid "Show above lockscreen"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:402
+msgid ""
+"Allow this layer to render above the session lock. 0 = below (default), 1 = "
+"above input fields, 2 = above everything."
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:407
+msgid "Level"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:414
+msgid "0 = below lock; 1 = above input; 2 = above everything."
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:426
+msgid "Custom rule…"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:428
+msgid ""
+"Type any layerrule effect verbatim, including plugin rules or values "
+"introduced in newer Hyprland versions."
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:433 hyprmod/ui/layer_rule_dialog.py:214
+msgid "Rule"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:436
+msgid ""
+"The full effect text including any args, exactly as it would appear inside a "
+"layerrule line."
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:694 hyprmod/core/layer_rules.py:706
+msgid "(no rule)"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:714
+#, python-brace-format
+msgid "namespace: {namespace}"
+msgstr ""
+
+#: hyprmod/core/layer_rules.py:723
+msgid "(disabled)"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:303
+msgid "Float window"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:304
+msgid "Open the window detached from the tiling layout."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:308
+msgid "Tile window"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:309
+msgid "Force the window into the tiling layout."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:313
+msgid "Pin to all workspaces"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:314
+msgid "Window stays visible across workspace switches (floating only)."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:318
+msgid "Center on monitor"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:319
+msgid "Center the window on its monitor (floating only)."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:323
+#: hyprmod/core/window_rules/_model.py:604
+msgid "Fullscreen"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:324
+msgid "Open the window fullscreen."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:329
+msgid "Open the window maximized."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:333
+msgid "Open on workspace"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:334
+msgid "Send the window to a specific workspace on spawn."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:341
+msgid ""
+"Workspace id (e.g. 1) or name (e.g. name:work). Append ' silent' to open "
+"without focusing."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:350
+msgid "Open on monitor"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:351
+msgid "Send the window to a specific monitor on spawn."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:354
+#: hyprmod/ui/workspace_rule_dialog.py:235
+msgid "Monitor"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:356
+msgid "Monitor name (e.g. DP-1) or numeric index."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:362
+msgid "Set size"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:363
+msgid "Set the window's initial size (floating only)."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:387
+msgid "Set position"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:388
+msgid "Set the window's initial position. Two space-separated expressions."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:391 hyprmod/ui/bezier_editor.py:146
+msgid "X"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:401 hyprmod/ui/bezier_editor.py:153
+msgid "Y"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:414
+msgid "Set opacity"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:417
+msgid ""
+"Override active and inactive opacity. Append ' override' to set absolutely "
+"(else multiplied)."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:423 hyprmod/pages/profiles.py:208
+msgid "Active"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:432
+msgid "Inactive"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:433
+msgid "Leave blank to use the active value for both."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:445
+msgid "Set corner rounding"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:446
+msgid "Override the corner rounding (in pixels) for this window."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:449
+msgid "Pixels"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:460
+msgid "Force opaque"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:461
+msgid "Disable transparency for this window."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:465
+msgid "No blur"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:466
+msgid "Disable background blur behind this window."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:470
+msgid "No shadow"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:471
+msgid "Disable the drop shadow for this window."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:476
+msgid "Disable open/close animations for this window."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:480
+msgid "No initial focus"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:481
+msgid "Don't focus the window when it spawns."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:485
+msgid "Never focusable"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:486
+msgid "Hyprland will never focus this window (e.g. legacy XWayland helpers)."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:490
+msgid "Stay focused"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:491
+msgid "Window keeps focus even when others would steal it."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:495
+msgid "Inhibit idle"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:496
+msgid "Prevent idle/screensaver while this window is around."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:499
+msgid "Mode"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:501
+msgid "One of: none, always, focus, fullscreen."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:508
+msgid "Suppress event"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:509
+msgid "Tell Hyprland to ignore a class of events from this window."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:512
+msgid "Event"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:516
+msgid ""
+"Space-separated: activate, activatefocus, fullscreen, maximize, "
+"fullscreenoutput."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:532
+msgid "Custom action…"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:533
+msgid "Type any Hyprland action verbatim, including plugin actions."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:538
+msgid "The full action string as it would appear before the comma."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:568
+msgid "Window class"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:569
+msgid "Match by app class (e.g. firefox, kitty). Regex."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:574
+msgid "Window title"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:575
+msgid "Match by window title text. Regex."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:580
+msgid "Initial class"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:581
+msgid "Class at spawn time, before the app sets a different one. Regex."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:586
+msgid "Initial title"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:587
+msgid "Title at spawn time, before the app updates it. Regex."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:592
+msgid "XWayland window"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:593
+msgid "Window is running under XWayland."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:598
+msgid "Floating"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:599
+msgid "Window is currently floating. Re-evaluates dynamically."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:605
+msgid "Window is currently fullscreen. Re-evaluates dynamically."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:610
+msgid "Pinned"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:611
+msgid "Window is pinned across workspaces. Re-evaluates dynamically."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:616
+msgid "Focused"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:617
+msgid "Window currently has keyboard focus. Re-evaluates dynamically."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:622
+msgid "Modal"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:623
+msgid "Window is a modal dialog (e.g. 'Are you sure?')."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:628
+msgid "On workspace"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:629
+msgid "Window is on a specific workspace."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:635
+msgid "Tag"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:636
+msgid "Window has a specific tag."
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:646
+msgid "Custom matcher…"
+msgstr ""
+
+#: hyprmod/core/window_rules/_model.py:647
+msgid "Any other Hyprland matcher key, including future additions."
+msgstr ""
+
+#: hyprmod/core/workspaces.py:284
+msgid "Named workspace"
+msgstr ""
+
+#: hyprmod/core/workspaces.py:285
+msgid "Special workspace"
+msgstr ""
+
+#: hyprmod/core/workspaces.py:298 hyprmod/core/workspaces.py:302
+#, python-brace-format
+msgid "Workspace {selector}"
+msgstr ""
+
+#: hyprmod/core/workspaces.py:314
+#, python-brace-format
+msgid "on {monitor}"
+msgstr ""
+
+#: hyprmod/core/workspaces.py:316
+msgid "default"
+msgstr ""
+
+#: hyprmod/core/workspaces.py:318
+msgid "persistent"
+msgstr ""
+
+#: hyprmod/core/workspaces.py:320
+#, python-brace-format
+msgid "gaps in {gap}"
+msgstr ""
+
+#: hyprmod/core/workspaces.py:322
+#, python-brace-format
+msgid "gaps out {gap}"
+msgstr ""
+
+#: hyprmod/core/workspaces.py:324
+#, python-brace-format
+msgid "border {size}px"
+msgstr ""
+
+#: hyprmod/core/workspaces.py:326
+msgid "no border"
+msgstr ""
+
+#: hyprmod/core/workspaces.py:328
+msgid "no rounding"
+msgstr ""
+
+#: hyprmod/core/workspaces.py:330
+msgid "no shadow"
+msgstr ""
+
+#: hyprmod/core/workspaces.py:332
+msgid "no decoration"
+msgstr ""
+
+#: hyprmod/core/workspaces.py:334
+#, python-brace-format
+msgid "name “{name}”"
+msgstr ""
+
+#: hyprmod/core/workspaces.py:336
+#, python-brace-format
+msgid "on first map: {command}"
+msgstr ""
+
+#: hyprmod/core/workspaces.py:338
+msgid "(no overrides)"
+msgstr ""
+
+#: hyprmod/main.py:22
+msgid ""
+"PyGObject's Cairo bindings are missing, so the monitor layout, the bezier "
+"curve editor, and the animation preview will show up as empty boxes.\n"
+"\n"
+"Install them with your package manager: python-cairo on Arch, python3-gi-"
+"cairo on Debian and Ubuntu."
+msgstr ""
+
+#: hyprmod/main.py:74
+msgid "Missing Cairo Bindings"
+msgstr ""
+
+#: hyprmod/main.py:77
+msgid "Close"
+msgstr ""
+
+#: hyprmod/main.py:86
+msgid "Setup failed"
+msgstr ""
+
+#: hyprmod/pages/animations.py:411
+msgid "new override"
+msgstr ""
+
+#: hyprmod/pages/animations.py:415 hyprmod/pages/animations.py:429
+#: hyprmod/pages/cursor.py:343 hyprmod/pages/monitors/page.py:943
+msgid "updated"
+msgstr ""
+
+#: hyprmod/pages/animations.py:420 hyprmod/pages/animations.py:421
+msgid "on"
+msgstr ""
+
+#: hyprmod/pages/animations.py:420 hyprmod/pages/animations.py:421
+msgid "off"
+msgstr ""
+
+#: hyprmod/pages/animations.py:424
+msgid "speed"
+msgstr ""
+
+#: hyprmod/pages/animations.py:426
+msgid "curve"
+msgstr ""
+
+#: hyprmod/pages/animations.py:428
+msgid "style"
+msgstr ""
+
+#: hyprmod/pages/animations.py:491 hyprmod/ui/bezier_editor.py:537
+msgid "Bezier Curve Editor"
+msgstr ""
+
+#: hyprmod/pages/animations.py:492
+msgid "Create and manage animation curves"
+msgstr ""
+
+#: hyprmod/pages/animations.py:550
+msgid "Edit animation settings"
+msgstr ""
+
+#: hyprmod/pages/animations.py:648
+msgid "Inherits from parent. Editing will create an override."
+msgstr ""
+
+#: hyprmod/pages/animations.py:668
+msgid "Speed"
+msgstr ""
+
+#: hyprmod/pages/animations.py:669
+msgid "Duration in deciseconds (1 = 100ms)"
+msgstr ""
+
+#: hyprmod/pages/animations.py:679
+msgid "Curve"
+msgstr ""
+
+#: hyprmod/pages/animations.py:680
+msgid "Bezier easing curve"
+msgstr ""
+
+#: hyprmod/pages/animations.py:690
+msgid "Edit curve"
+msgstr ""
+
+#: hyprmod/pages/autostart.py:119
+msgid "Add autostart entry"
+msgstr ""
+
+#: hyprmod/pages/autostart.py:135
+msgid ""
+"Reorder entries by dragging them within their group, or with Alt+↑ / Alt+↓ "
+"on a focused row."
+msgstr ""
+
+#: hyprmod/pages/autostart.py:170
+#, python-brace-format
+msgid "Add another entry that runs {label}"
+msgstr ""
+
+#: hyprmod/pages/autostart.py:191
+msgid "No Autostart Entries"
+msgstr ""
+
+#: hyprmod/pages/autostart.py:192
+msgid "Add programs that should launch automatically when Hyprland starts."
+msgstr ""
+
+#: hyprmod/pages/autostart.py:289
+msgid "Run this command now"
+msgstr ""
+
+#: hyprmod/pages/autostart.py:310
+msgid ""
+"Entries below come from your hyprland.conf or its sourced files and already "
+"run at Hyprland startup or reload. Edit those files directly to change them."
+msgstr ""
+
+#: hyprmod/pages/autostart.py:447
+#, python-brace-format
+msgid "Couldn't parse command: {error}"
+msgstr ""
+
+#: hyprmod/pages/autostart.py:459
+#, python-brace-format
+msgid "Failed to run: {error}"
+msgstr ""
+
+#: hyprmod/pages/autostart.py:462
+#, python-brace-format
+msgid "Started: {command}"
+msgstr ""
+
+#: hyprmod/pages/binds.py:171
+msgid "Add keybind"
+msgstr ""
+
+#: hyprmod/pages/binds.py:176
+msgid "Search keybinds"
+msgstr ""
+
+#: hyprmod/pages/binds.py:185
+msgid "Filter keybinds…"
+msgstr ""
+
+#: hyprmod/pages/binds.py:237
+msgid ""
+"Locked keybinds come from your hyprland.conf. Supported keybinds can be "
+"overridden with the edit button."
+msgstr ""
+
+#: hyprmod/pages/binds.py:250
+#, python-brace-format
+msgid "1 keybind"
+msgid_plural "{n} keybinds"
+msgstr[0] ""
+msgstr[1] ""
+
+#: hyprmod/pages/binds.py:257
+#, python-brace-format
+msgid "Add keybind to {category}"
+msgstr ""
+
+#: hyprmod/pages/binds.py:273
+msgid "No Keybinds"
+msgstr ""
+
+#: hyprmod/pages/binds.py:276
+msgid ""
+"Bind keys to launch apps, switch workspaces, or trigger any Hyprland "
+"dispatcher."
+msgstr ""
+
+#: hyprmod/pages/binds.py:314
+msgid "Override this keybind"
+msgstr ""
+
+#: hyprmod/pages/binds.py:320 hyprmod/pages/binds.py:349
+msgid "HyprMod cannot safely edit this keybind"
+msgstr ""
+
+#: hyprmod/pages/binds.py:556
+msgid "(no shortcut)"
+msgstr ""
+
+#: hyprmod/pages/binds.py:560 hyprmod/pages/section.py:538
+msgid "new"
+msgstr ""
+
+#: hyprmod/pages/binds.py:569 hyprmod/pages/binds.py:570
+#: hyprmod/pages/binds.py:586
+msgid "(none)"
+msgstr ""
+
+#: hyprmod/pages/binds.py:590 hyprmod/pages/section.py:554
+msgid "deleted"
+msgstr ""
+
+#: hyprmod/pages/cursor.py:117
+msgid "Theme"
+msgstr ""
+
+#: hyprmod/pages/cursor.py:120
+msgid ""
+"Applies instantly to Hyprland and GTK apps. Other apps pick up changes on "
+"relaunch."
+msgstr ""
+
+#: hyprmod/pages/cursor.py:144
+msgid "Theme and size"
+msgstr ""
+
+#: hyprmod/pages/cursor.py:158
+msgid "Cursor size (pixels)"
+msgstr ""
+
+#: hyprmod/pages/cursor.py:335
+msgid "theme"
+msgstr ""
+
+#: hyprmod/pages/cursor.py:339
+msgid "size"
+msgstr ""
+
+#: hyprmod/pages/cursor.py:342
+msgid "Cursor theme"
+msgstr ""
+
+#: hyprmod/pages/env_vars.py:120
+msgid "Add environment variable"
+msgstr ""
+
+#: hyprmod/pages/env_vars.py:142
+msgid ""
+"Reorder entries by dragging them, or with Alt+↑ / Alt+↓ on a focused row. "
+"Order matters when one variable references another (e.g. ‘PATH’)."
+msgstr ""
+
+#: hyprmod/pages/env_vars.py:150
+msgid "No Environment Variables"
+msgstr ""
+
+#: hyprmod/pages/env_vars.py:153
+msgid ""
+"Export variables to processes Hyprland spawns - toolkit hints "
+"(QT_QPA_PLATFORM), theme overrides, scaling settings, and so on."
+msgstr ""
+
+#: hyprmod/pages/env_vars.py:230
+msgid ""
+"Variables below come from your hyprland.conf or its sourced files. Click the "
+"edit button to override them - your managed entry will take precedence on "
+"the next Hyprland session."
+msgstr ""
+
+#: hyprmod/pages/env_vars.py:263 hyprmod/pages/plugins.py:318
+msgid "Overridden"
+msgstr ""
+
+#: hyprmod/pages/env_vars.py:278
+msgid "Override this variable"
+msgstr ""
+
+#: hyprmod/pages/layer_rules.py:127
+msgid "Add layer rule"
+msgstr ""
+
+#: hyprmod/pages/layer_rules.py:150
+msgid "No Layer Rules"
+msgstr ""
+
+#: hyprmod/pages/layer_rules.py:153
+msgid ""
+"Tweak how shell surfaces (waybar, notifications, rofi, wallpapers) are "
+"decorated - backdrop blur, dim-around, animations, render order."
+msgstr ""
+
+#: hyprmod/pages/layer_rules.py:165
+msgid ""
+"Rules accumulate per surface. ‘unset’ clears every prior rule for the "
+"matched namespace - place it first when you want to start fresh. Reorder "
+"with Alt+↑ / Alt+↓ on a focused row."
+msgstr ""
+
+#: hyprmod/pages/layer_rules.py:194 hyprmod/pages/window_rules.py:255
+#: hyprmod/pages/workspaces.py:183
+msgid ""
+"Rules below come from your hyprland.conf or its sourced files. Edit those "
+"files directly to change them - hyprmod doesn't manage rules outside its own "
+"file."
+msgstr ""
+
+#: hyprmod/pages/layer_rules.py:207 hyprmod/pages/window_rules.py:272
+#: hyprmod/pages/workspaces.py:194
+msgid "line"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:60
+msgid "SDR Brightness"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:61
+msgid "Brightness for SDR content in HDR mode"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:72
+msgid "SDR Saturation"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:73
+msgid "Saturation for SDR content in HDR mode"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:83
+msgid "SDR Min Luminance"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:84
+msgid "Minimum luminance for SDR to HDR mapping"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:95
+msgid "SDR Max Luminance"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:96
+msgid "Maximum luminance for SDR content"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:107
+msgid "HDR Min Luminance"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:108
+msgid "Minimum luminance for HDR output"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:119
+msgid "HDR Max Luminance"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:120
+msgid "Maximum luminance for HDR output"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:131
+msgid "Max Avg Luminance"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:132
+msgid "Monitor maximum average luminance"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:281
+msgid "Supports:"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:307 hyprmod/ui/row_actions.py:47
+msgid "Discard changes"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:314
+msgid "Remove override"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:324
+msgid "Managed"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:356
+msgid "Resolution"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:357
+msgid "Resolution and refresh rate"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:381
+msgid "Scale"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:382
+msgid "Display scaling factor"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:392
+msgid "Transform"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:393
+msgid "Screen rotation"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:441
+msgid "Position"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:469
+#: hyprmod/pages/monitors/projection_switch.py:117
+msgid "Mirror"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:470
+msgid "Clone another monitor's content"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:490
+msgid "Identify by description"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:496
+msgid ""
+"Another connected monitor matches the same description prefix - Hyprland may "
+"apply this config to the wrong monitor"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:605
+msgid "Description not reported by this monitor"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:607
+msgid "This monitor does not report a description"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:622
+#, python-brace-format
+msgid "{match} - ambiguous, another monitor matches the same prefix"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:633
+msgid "Another connected monitor shares the same description prefix"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:667
+msgid "Safe Defaults"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:667
+msgid "Restore conservative HDR values"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:670
+msgid "Apply safe defaults"
+msgstr ""
+
+#: hyprmod/pages/monitors/card.py:722
+#, python-brace-format
+msgid "Lock {field} with {peer}"
+msgstr ""
+
+#: hyprmod/pages/monitors/confirm_controller.py:122
+#, python-brace-format
+msgid "Reverting in {seconds}s unless changed or confirmed"
+msgstr ""
+
+#: hyprmod/pages/monitors/page.py:278
+msgid "Refresh monitors"
+msgstr ""
+
+#: hyprmod/pages/monitors/page.py:315
+msgid "No Monitors Detected"
+msgstr ""
+
+#: hyprmod/pages/monitors/page.py:316
+msgid "Could not read monitor information from Hyprland."
+msgstr ""
+
+#: hyprmod/pages/monitors/page.py:339
+msgid "Drag monitors to reposition"
+msgstr ""
+
+#: hyprmod/pages/monitors/page.py:346
+msgid "Monitors have gaps between them - cursor won't be able to move across"
+msgstr ""
+
+#: hyprmod/pages/monitors/page.py:836
+#, python-brace-format
+msgid "Monitor revert failed: {error}"
+msgstr ""
+
+#: hyprmod/pages/monitors/page.py:928
+msgid "disabled"
+msgstr ""
+
+#: hyprmod/pages/monitors/page.py:928
+msgid "re-enabled"
+msgstr ""
+
+#: hyprmod/pages/monitors/page.py:934
+msgid "pos"
+msgstr ""
+
+#: hyprmod/pages/monitors/page.py:936
+msgid "scale"
+msgstr ""
+
+#: hyprmod/pages/monitors/page.py:938
+msgid "rotate"
+msgstr ""
+
+#: hyprmod/pages/monitors/page.py:941
+msgid "mirror"
+msgstr ""
+
+#: hyprmod/pages/monitors/page.py:985
+#, python-brace-format
+msgid "Monitor discard failed: {error}"
+msgstr ""
+
+#: hyprmod/pages/monitors/projection_switch.py:61
+msgid "Projection Presets"
+msgstr ""
+
+#: hyprmod/pages/monitors/projection_switch.py:101
+msgid "Single Monitor"
+msgstr ""
+
+#: hyprmod/pages/monitors/projection_switch.py:102
+msgid "Only one monitor is connected."
+msgstr ""
+
+#: hyprmod/pages/monitors/projection_switch.py:106
+msgid "No preset selected."
+msgstr ""
+
+#: hyprmod/pages/monitors/projection_switch.py:110
+msgid "Extend"
+msgstr ""
+
+#: hyprmod/pages/monitors/projection_switch.py:111
+msgid "Extend the display across all monitors."
+msgstr ""
+
+#: hyprmod/pages/monitors/projection_switch.py:118
+msgid "Mirror the display across all monitors."
+msgstr ""
+
+#: hyprmod/pages/monitors/projection_switch.py:124
+#, python-brace-format
+msgid "Display only on {monitor}"
+msgstr ""
+
+#: hyprmod/pages/pending.py:110
+msgid "No Pending Changes"
+msgstr ""
+
+#: hyprmod/pages/pending.py:112
+msgid ""
+"Edits made on any page will appear here for you to review before saving."
+msgstr ""
+
+#: hyprmod/pages/pending.py:124
+msgid "Config diff preview"
+msgstr ""
+
+#: hyprmod/pages/pending.py:126
+msgid "Comparison between the saved config and what the next save would write."
+msgstr ""
+
+#: hyprmod/pages/pending.py:196
+#, python-brace-format
+msgid "1 unsaved change"
+msgid_plural "{n} unsaved changes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: hyprmod/pages/pending.py:207
+#, python-brace-format
+msgid "1 change"
+msgid_plural "{n} changes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: hyprmod/pages/pending.py:233
+msgid "Revert this change"
+msgstr ""
+
+#: hyprmod/pages/plugins.py:85
+msgid "Add plugin setting"
+msgstr ""
+
+#: hyprmod/pages/plugins.py:110
+msgid "No Custom Plugins"
+msgstr ""
+
+#: hyprmod/pages/plugins.py:111
+msgid "Add arbitrary settings for unsupported plugins."
+msgstr ""
+
+#: hyprmod/pages/plugins.py:121
+msgid "Supported Plugins"
+msgstr ""
+
+#: hyprmod/pages/plugins.py:157
+#, python-brace-format
+msgid "1 custom setting"
+msgid_plural "{n} custom settings"
+msgstr[0] ""
+msgstr[1] ""
+
+#: hyprmod/pages/plugins.py:203
+msgid ""
+"Plugins must be loaded to configure them. Add hyprpm reload to autostart?"
+msgstr ""
+
+#: hyprmod/pages/plugins.py:204
+msgid "Add to Autostart"
+msgstr ""
+
+#: hyprmod/pages/plugins.py:217
+#, python-brace-format
+msgid "{name} Settings"
+msgstr ""
+
+#: hyprmod/pages/plugins.py:290
+msgid ""
+"Settings below come from your hyprland.conf or its sourced files. Click the "
+"edit button to override them - your managed entry will take precedence on "
+"the next Hyprland session."
+msgstr ""
+
+#: hyprmod/pages/plugins.py:332
+msgid "Override this setting"
+msgstr ""
+
+#: hyprmod/pages/profiles.py:122
+msgid "Activate"
+msgstr ""
+
+#: hyprmod/pages/profiles.py:123 hyprmod/pages/profiles.py:273
+msgid "Rename"
+msgstr ""
+
+#: hyprmod/pages/profiles.py:124 hyprmod/pages/profiles.py:274
+msgid "Duplicate"
+msgstr ""
+
+#: hyprmod/pages/profiles.py:127 hyprmod/pages/profiles.py:277
+msgid "Delete"
+msgstr ""
+
+#: hyprmod/pages/profiles.py:158
+msgid "Save current as new profile"
+msgstr ""
+
+#: hyprmod/pages/profiles.py:246
+msgid "No active profile"
+msgstr ""
+
+#: hyprmod/pages/profiles.py:251
+msgid "Save your current configuration as a profile to track it"
+msgstr ""
+
+#: hyprmod/pages/profiles.py:260
+msgid "Save current"
+msgstr ""
+
+#: hyprmod/pages/profiles.py:315
+msgid "Rename Profile"
+msgstr ""
+
+#: hyprmod/pages/profiles.py:327 hyprmod/pages/profiles.py:480
+#: hyprmod/ui/env_var_edit_dialog.py:117 hyprmod/ui/layer_rule_dialog.py:172
+#: hyprmod/ui/window_rule_dialog.py:189 hyprmod/ui/workspace_rule_dialog.py:395
+msgid "Name"
+msgstr ""
+
+#: hyprmod/pages/profiles.py:376
+msgid "No Profiles"
+msgstr ""
+
+#: hyprmod/pages/profiles.py:379
+msgid ""
+"Profiles let you save and switch between configurations instantly. Save your "
+"current setup to create your first one."
+msgstr ""
+
+#: hyprmod/pages/profiles.py:400
+msgid "Saved profiles"
+msgstr ""
+
+#: hyprmod/pages/profiles.py:465
+msgid "Save Current as Profile"
+msgstr ""
+
+#: hyprmod/pages/profiles.py:529
+msgid "A profile with this name already exists"
+msgstr ""
+
+#: hyprmod/pages/section.py:563
+msgid "Reordered"
+msgstr ""
+
+#: hyprmod/pages/section.py:564
+msgid "in a different order"
+msgstr ""
+
+#: hyprmod/pages/section.py:666
+msgid "Removed (pending save)"
+msgstr ""
+
+#: hyprmod/pages/section.py:668
+msgid "will be removed on save"
+msgstr ""
+
+#: hyprmod/pages/section.py:692
+#, python-brace-format
+msgid "Restore this {unit}"
+msgstr ""
+
+#: hyprmod/pages/settings.py:24
+msgid "Configuration"
+msgstr ""
+
+#: hyprmod/pages/settings.py:25
+msgid "Manage where HyprMod reads and writes Hyprland settings."
+msgstr ""
+
+#: hyprmod/pages/settings.py:29
+msgid "Config file path"
+msgstr ""
+
+#: hyprmod/pages/settings.py:33
+#, python-brace-format
+msgid "Default: {path}"
+msgstr ""
+
+#: hyprmod/pages/settings.py:42
+msgid "Browse…"
+msgstr ""
+
+#: hyprmod/pages/settings.py:51
+msgid "Behavior"
+msgstr ""
+
+#: hyprmod/pages/settings.py:55 hyprmod/window.py:456
+msgid "Auto-save"
+msgstr ""
+
+#: hyprmod/pages/settings.py:56
+msgid "Automatically save changes after each modification."
+msgstr ""
+
+#: hyprmod/pages/settings.py:97
+msgid "Overwrite existing file?"
+msgstr ""
+
+#: hyprmod/pages/settings.py:99
+#, python-brace-format
+msgid ""
+"{name} already exists at this location. It will be replaced with the current "
+"config."
+msgstr ""
+
+#: hyprmod/pages/settings.py:102
+msgid "Overwrite"
+msgstr ""
+
+#: hyprmod/pages/settings.py:114
+#, python-brace-format
+msgid "Cannot move config: {error}"
+msgstr ""
+
+#: hyprmod/pages/settings.py:130
+msgid "Select config file"
+msgstr ""
+
+#: hyprmod/pages/window_rules.py:188
+msgid "Add window rule"
+msgstr ""
+
+#: hyprmod/pages/window_rules.py:210
+msgid "No Window Rules"
+msgstr ""
+
+#: hyprmod/pages/window_rules.py:213
+msgid ""
+"Make Hyprland treat specific windows differently - pin them, set opacity, "
+"open on a workspace, and more."
+msgstr ""
+
+#: hyprmod/pages/window_rules.py:226
+msgid ""
+"Rules are evaluated top to bottom. When two rules match the same window, the "
+"lower one wins. Reorder with Alt+↑ / Alt+↓ on a focused row."
+msgstr ""
+
+#: hyprmod/pages/window_rules.py:440
+#, python-brace-format
+msgid "Couldn't apply to existing windows: {error}"
+msgstr ""
+
+#: hyprmod/pages/window_rules.py:447
+#, python-brace-format
+msgid "Applied to 1 existing window"
+msgid_plural "Applied to {n} existing windows"
+msgstr[0] ""
+msgstr[1] ""
+
+#: hyprmod/pages/window_rules.py:478
+#, python-brace-format
+msgid "Couldn't revert on existing windows: {error}"
+msgstr ""
+
+#: hyprmod/pages/window_rules.py:519
+msgid "Apply this rule to HyprMod itself?"
+msgstr ""
+
+#: hyprmod/pages/window_rules.py:530
+msgid "Apply Live"
+msgstr ""
+
+#: hyprmod/pages/workspaces.py:112
+msgid "Add workspace rule"
+msgstr ""
+
+#: hyprmod/pages/workspaces.py:134
+msgid "No Workspace Rules"
+msgstr ""
+
+#: hyprmod/pages/workspaces.py:137
+msgid ""
+"Pin workspaces to specific monitors, configure persistence, override gaps "
+"and borders, or run a command when a workspace first opens."
+msgstr ""
+
+#: hyprmod/pages/workspaces.py:156
+msgid ""
+"When multiple rules target the same workspace, Hyprland uses the last one in "
+"the file. Reorder with Alt+↑ / Alt+↓ on a focused row."
+msgstr ""
+
+#: hyprmod/ui/__init__.py:213 hyprmod/ui/lua_migration_dialog.py:176
+msgid "Preview"
+msgstr ""
+
+#: hyprmod/ui/about.py:19
+msgid "A native GTK4/libadwaita settings app for Hyprland"
+msgstr ""
+
+#: hyprmod/ui/about.py:46
+#, python-brace-format
+msgid "Hyprland schema: {schema_version} (bundled)"
+msgstr ""
+
+#: hyprmod/ui/app_picker.py:44
+msgid "Pick an Application"
+msgstr ""
+
+#: hyprmod/ui/app_picker.py:59
+msgid "Search applications…"
+msgstr ""
+
+#: hyprmod/ui/app_picker.py:76 hyprmod/ui/keyboard_layouts_dialog.py:75
+#: hyprmod/ui/window_picker.py:234
+msgid "No Matches"
+msgstr ""
+
+#: hyprmod/ui/app_picker.py:77 hyprmod/ui/keyboard_layouts_dialog.py:76
+#: hyprmod/ui/search.py:94 hyprmod/ui/window_picker.py:235
+msgid "Try a different search term."
+msgstr ""
+
+#: hyprmod/ui/autostart_edit_dialog.py:77
+msgid ""
+"Pick an installed app or type any shell command. Hyprland passes this to /"
+"bin/sh -c, so quoting and metacharacters work as in shell."
+msgstr ""
+
+#: hyprmod/ui/autostart_edit_dialog.py:82
+msgid "Command line"
+msgstr ""
+
+#: hyprmod/ui/autostart_edit_dialog.py:101
+msgid "Behaviour"
+msgstr ""
+
+#: hyprmod/ui/autostart_edit_dialog.py:102
+msgid "Re-run on every config reload"
+msgstr ""
+
+#: hyprmod/ui/autostart_edit_dialog.py:105
+msgid ""
+"Off: run once at Hyprland startup (recommended).\n"
+"On: re-run every time the config is reloaded - useful for cleanup commands "
+"like pkill -SIGUSR1."
+msgstr ""
+
+#: hyprmod/ui/banner.py:44 hyprmod/ui/banner.py:152
+msgid "Unsaved changes - applied live, not saved to disk"
+msgstr ""
+
+#: hyprmod/ui/banner.py:49
+msgid "Discard"
+msgstr ""
+
+#: hyprmod/ui/banner.py:86
+msgid "Changes saved to disk"
+msgstr ""
+
+#: hyprmod/ui/banner.py:100
+msgid "Save without updating profile"
+msgstr ""
+
+#: hyprmod/ui/banner.py:101
+msgid "Save as new profile"
+msgstr ""
+
+#: hyprmod/ui/banner.py:113
+msgid "Save now"
+msgstr ""
+
+#: hyprmod/ui/bezier_editor.py:54
+msgid "Preset"
+msgstr ""
+
+#: hyprmod/ui/bezier_editor.py:83
+msgid "Drag control points to adjust the curve"
+msgstr ""
+
+#: hyprmod/ui/bezier_editor.py:95
+msgid "Control Points"
+msgstr ""
+
+#: hyprmod/ui/bezier_editor.py:241
+msgid "Revert"
+msgstr ""
+
+#: hyprmod/ui/bezier_editor.py:243
+msgid "Revert to saved curve"
+msgstr ""
+
+#: hyprmod/ui/bezier_editor.py:248
+msgid "Save"
+msgstr ""
+
+#: hyprmod/ui/bezier_editor.py:251 hyprmod/ui/shortcuts.py:87
+msgid "Save changes"
+msgstr ""
+
+#: hyprmod/ui/bezier_editor.py:256
+msgid "Save as…"
+msgstr ""
+
+#: hyprmod/ui/bezier_editor.py:258
+msgid "Save as new custom curve"
+msgstr ""
+
+#: hyprmod/ui/bezier_editor.py:266
+msgid "Apply curve to animation"
+msgstr ""
+
+#: hyprmod/ui/bezier_editor.py:281
+msgid "Rename curve"
+msgstr ""
+
+#: hyprmod/ui/bezier_editor.py:289
+msgid "Delete curve"
+msgstr ""
+
+#: hyprmod/ui/bezier_editor.py:321
+msgid "Save as Custom Curve"
+msgstr ""
+
+#: hyprmod/ui/bezier_editor.py:322
+msgid "Enter a name for your curve."
+msgstr ""
+
+#: hyprmod/ui/bezier_editor.py:355
+msgid "Rename Curve"
+msgstr ""
+
+#: hyprmod/ui/config_error.py:36
+msgid "Can't Read Your Config"
+msgstr ""
+
+#: hyprmod/ui/config_error.py:37
+#, python-brace-format
+msgid ""
+"{message}\n"
+"\n"
+"Fix the file, then try again."
+msgstr ""
+
+#: hyprmod/ui/deprecation_banner.py:53
+msgid "Review…"
+msgstr ""
+
+#: hyprmod/ui/deprecation_banner.py:59
+msgid "Don't show again for this scan"
+msgstr ""
+
+#: hyprmod/ui/deprecation_dialog.py:39
+msgid "Migrate deprecated syntax"
+msgstr ""
+
+#: hyprmod/ui/deprecation_dialog.py:50
+msgid "Apply selected"
+msgstr ""
+
+#: hyprmod/ui/deprecation_dialog.py:100
+msgid "Fixable files"
+msgstr ""
+
+#: hyprmod/ui/deprecation_dialog.py:103
+msgid ""
+"Each file is rewritten in place; a timestamped backup is saved in a .hyprmod-"
+"backups/ directory beside it."
+msgstr ""
+
+#: hyprmod/ui/deprecation_dialog.py:134
+msgid "This path resolves through a symlink"
+msgstr ""
+
+#: hyprmod/ui/deprecation_dialog.py:137
+msgid ""
+"Writing it will modify the symlink target, which may live in a dotfiles "
+"repository."
+msgstr ""
+
+#: hyprmod/ui/deprecation_dialog.py:165
+msgid "Detected but not auto-fixable"
+msgstr ""
+
+#: hyprmod/ui/deprecation_dialog.py:167
+msgid ""
+"These deprecations need a manual edit - there's no safe automatic rewrite."
+msgstr ""
+
+#: hyprmod/ui/diff.py:90
+msgid "Saved config is up to date"
+msgstr ""
+
+#: hyprmod/ui/diff.py:95
+msgid "Resulting config"
+msgstr ""
+
+#: hyprmod/ui/env_var_edit_dialog.py:108
+msgid "Variable"
+msgstr ""
+
+#: hyprmod/ui/env_var_edit_dialog.py:111
+msgid ""
+"Hyprland exports this variable to processes it spawns (autostart commands, "
+"dispatchers, terminal launches). Changes take effect on the next Hyprland "
+"session."
+msgstr ""
+
+#: hyprmod/ui/env_var_edit_dialog.py:122
+#: hyprmod/ui/workspace_rule_dialog.py:203
+msgid "Value"
+msgstr ""
+
+#: hyprmod/ui/env_var_edit_dialog.py:197
+msgid "(entry incomplete)"
+msgstr ""
+
+#: hyprmod/ui/keyboard_layouts_dialog.py:168
+msgid "Keyboard layouts"
+msgstr ""
+
+#: hyprmod/ui/keyboard_layouts_dialog.py:183
+msgid ""
+"Reorder by dragging a layout, or with Alt+↑ / Alt+↓ on a focused row. The "
+"first layout is the default."
+msgstr ""
+
+#: hyprmod/ui/keyboard_layouts_dialog.py:196
+#: hyprmod/ui/keyboard_layouts_dialog.py:326
+msgid "Add layout"
+msgstr ""
+
+#: hyprmod/ui/keyboard_layouts_dialog.py:203
+msgid ""
+"Set a switch shortcut (e.g. grp:alt_shift_toggle) under Keyboard options."
+msgstr ""
+
+#: hyprmod/ui/keyboard_layouts_dialog.py:260
+msgid "Default"
+msgstr ""
+
+#: hyprmod/ui/keyboard_layouts_dialog.py:267
+msgid "Remove layout"
+msgstr ""
+
+#: hyprmod/ui/layer_rule_dialog.py:166 hyprmod/ui/window_rule_dialog.py:183
+msgid ""
+"Naming a rule lets you enable / disable it at runtime via Hyprland's Lua API "
+"or hyprctl. Anonymous rules are written as the compact one-line form."
+msgstr ""
+
+#: hyprmod/ui/layer_rule_dialog.py:178 hyprmod/ui/window_rule_dialog.py:195
+msgid "Enabled"
+msgstr ""
+
+#: hyprmod/ui/layer_rule_dialog.py:179 hyprmod/ui/window_rule_dialog.py:196
+msgid "Uncheck to keep the rule defined but inactive on next reload."
+msgstr ""
+
+#: hyprmod/ui/layer_rule_dialog.py:189
+msgid "Match this layer surface"
+msgstr ""
+
+#: hyprmod/ui/layer_rule_dialog.py:192
+msgid ""
+"Type the layer namespace as a regex. Common namespaces: waybar, "
+"notifications, rofi, mako, dunst, wallpaper."
+msgstr ""
+
+#: hyprmod/ui/layer_rule_dialog.py:197
+msgid "Namespace regex"
+msgstr ""
+
+#: hyprmod/ui/layer_rule_dialog.py:200
+msgid ""
+"Regex matching the layer surface namespace. Examples: ‘waybar’, ‘^(rofi|wofi)"
+"$’, ‘notifications’."
+msgstr ""
+
+#: hyprmod/ui/layer_rule_dialog.py:211
+msgid "Apply this rule"
+msgstr ""
+
+#: hyprmod/ui/layer_rule_dialog.py:212
+msgid "Pick what Hyprland should do for matching layer surfaces."
+msgstr ""
+
+#: hyprmod/ui/layer_rule_dialog.py:405 hyprmod/ui/window_rule_dialog.py:495
+msgid "(rule incomplete)"
+msgstr ""
+
+#: hyprmod/ui/lua_migration_banner.py:81 hyprmod/window.py:463
+msgid "Migrate to Lua…"
+msgstr ""
+
+#: hyprmod/ui/lua_migration_banner.py:90
+msgid "Don't show again"
+msgstr ""
+
+#: hyprmod/ui/lua_migration_controller.py:177
+msgid "Lua migration complete"
+msgstr ""
+
+#: hyprmod/ui/lua_migration_controller.py:180
+msgid ""
+"Hyprland is still running with your existing hyprland.conf - the config "
+"language is fixed at compositor startup, so the new hyprland.lua won't take "
+"over until you log out and log back in.\n"
+"\n"
+"Until then, live-preview changes in HyprMod still go through the .conf path "
+"and may behave inconsistently with the new .lua files on disk."
+msgstr ""
+
+#: hyprmod/ui/lua_migration_controller.py:196
+msgid "Configuration recovered"
+msgstr ""
+
+#: hyprmod/ui/lua_migration_controller.py:199
+msgid ""
+"hyprland.lua now holds your migrated configuration. HyprMod reloads Hyprland "
+"and reopens to pick it up."
+msgstr ""
+
+#: hyprmod/ui/lua_migration_dialog.py:41
+msgid "Migrate to Lua"
+msgstr ""
+
+#: hyprmod/ui/lua_migration_dialog.py:52
+msgid "Migrate"
+msgstr ""
+
+#: hyprmod/ui/lua_migration_dialog.py:114
+msgid "Summary"
+msgstr ""
+
+#: hyprmod/ui/lua_migration_dialog.py:118
+msgid ""
+"Hyprland no longer reads hyprland.conf and is running a generated "
+"hyprland.lua. Migrating replaces that file with your configuration. Your "
+"hyprland.conf stays untouched."
+msgstr ""
+
+#: hyprmod/ui/lua_migration_dialog.py:126
+msgid ""
+"Your existing hyprland.conf stays untouched. The wizard writes hyprland.lua "
+"and one .lua per sourced file alongside the originals."
+msgstr ""
+
+#: hyprmod/ui/lua_migration_dialog.py:131
+msgid "Files to write"
+msgstr ""
+
+#: hyprmod/ui/lua_migration_dialog.py:137
+msgid "Sourced sub-configs"
+msgstr ""
+
+#: hyprmod/ui/lua_migration_dialog.py:138
+msgid "Each gets its own .lua next to the original .conf."
+msgstr ""
+
+#: hyprmod/ui/lua_migration_dialog.py:143
+msgid "Overwrite existing .lua files"
+msgstr ""
+
+#: hyprmod/ui/lua_migration_dialog.py:160
+msgid "Won't migrate"
+msgstr ""
+
+#: hyprmod/ui/lua_migration_dialog.py:163
+msgid ""
+"The Lua API doesn't have a direct equivalent for these - they'll be left out "
+"of the generated .lua and you'll need to port them by hand."
+msgstr ""
+
+#: hyprmod/ui/lua_migration_dialog.py:220
+msgid ""
+"Existing .lua files would block the write. Toggle 'Overwrite existing .lua "
+"files' to continue."
+msgstr ""
+
+#: hyprmod/ui/lua_migration_dialog.py:242
+msgid "Couldn't back up the existing .lua files"
+msgstr ""
+
+#: hyprmod/ui/onboarding_dialog.py:32
+msgid "Welcome to HyprMod"
+msgstr ""
+
+#: hyprmod/ui/onboarding_dialog.py:49
+msgid ""
+"HyprMod gives you a visual interface for all Hyprland settings with live "
+"preview. Every change is applied instantly to your running compositor."
+msgstr ""
+
+#: hyprmod/ui/onboarding_dialog.py:82
+#, python-brace-format
+msgid "To get started, HyprMod needs to add one line to your {entry_name}:"
+msgstr ""
+
+#: hyprmod/ui/options/color.py:113
+msgid "Angle (degrees)"
+msgstr ""
+
+#: hyprmod/ui/options/color.py:136
+msgid "Add color stop"
+msgstr ""
+
+#: hyprmod/ui/options/color.py:171
+msgid "Remove color stop"
+msgstr ""
+
+#: hyprmod/ui/options/multi.py:46
+msgid "Add option…"
+msgstr ""
+
+#: hyprmod/ui/options/multi.py:78
+msgid "Add selected option"
+msgstr ""
+
+#: hyprmod/ui/options/multi.py:147
+msgid "Remove"
+msgstr ""
+
+#: hyprmod/ui/options/multi.py:160
+#, python-brace-format
+msgid "1 option selected"
+msgid_plural "{n} options selected"
+msgstr[0] ""
+msgstr[1] ""
+
+#: hyprmod/ui/pending_chip.py:28
+msgid "View pending changes"
+msgstr ""
+
+#: hyprmod/ui/plugin_setting_edit_dialog.py:57
+msgid "Plugin Setting"
+msgstr ""
+
+#: hyprmod/ui/plugin_setting_edit_dialog.py:60
+msgid ""
+"Define custom settings for Hyprland plugins. These settings will be written "
+"into a plugin { ... } block."
+msgstr ""
+
+#: hyprmod/ui/plugin_setting_edit_dialog.py:65
+msgid "Plugin Name"
+msgstr ""
+
+#: hyprmod/ui/plugin_setting_edit_dialog.py:70
+msgid "Setting Key"
+msgstr ""
+
+#: hyprmod/ui/plugin_setting_edit_dialog.py:75
+msgid "Setting Value"
+msgstr ""
+
+#: hyprmod/ui/search.py:93
+msgid "No Results"
+msgstr ""
+
+#: hyprmod/ui/search.py:105
+#, python-brace-format
+msgid "{count} result"
+msgid_plural "{count} results"
+msgstr[0] ""
+msgstr[1] ""
+
+#: hyprmod/ui/shortcuts.py:86
+msgid "General"
+msgstr ""
+
+#: hyprmod/ui/shortcuts.py:88
+msgid "Undo last change"
+msgstr ""
+
+#: hyprmod/ui/shortcuts.py:89
+msgid "Redo change"
+msgstr ""
+
+#: hyprmod/ui/shortcuts.py:90
+msgid "Search"
+msgstr ""
+
+#: hyprmod/ui/shortcuts.py:91
+msgid "Search options"
+msgstr ""
+
+#: hyprmod/ui/shortcuts.py:92
+msgid "Close search"
+msgstr ""
+
+#: hyprmod/ui/shortcuts.py:93
+msgid "Help"
+msgstr ""
+
+#: hyprmod/ui/shortcuts.py:94
+msgid "Show keyboard shortcuts"
+msgstr ""
+
+#: hyprmod/ui/sidebar.py:88
+msgid "Search options (Ctrl+F)"
+msgstr ""
+
+#: hyprmod/ui/sidebar.py:92
+msgid "Search options…"
+msgstr ""
+
+#: hyprmod/ui/sidebar.py:132 hyprmod/window.py:416
+msgid "Profiles"
+msgstr ""
+
+#: hyprmod/ui/sidebar.py:138 hyprmod/window.py:418
+msgid "Settings"
+msgstr ""
+
+#: hyprmod/ui/sidebar.py:195
+msgid "Look & Feel"
+msgstr ""
+
+#: hyprmod/ui/sidebar.py:201
+msgid "Input"
+msgstr ""
+
+#: hyprmod/ui/sidebar.py:206
+msgid "Display"
+msgstr ""
+
+#: hyprmod/ui/sidebar.py:220
+msgid "Startup"
+msgstr ""
+
+#: hyprmod/ui/window_picker.py:56
+msgid "Pick an Open Window"
+msgstr ""
+
+#: hyprmod/ui/window_picker.py:66
+msgid "Re-query open windows"
+msgstr ""
+
+#: hyprmod/ui/window_picker.py:78
+msgid "Search by class or title…"
+msgstr ""
+
+#: hyprmod/ui/window_picker.py:97 hyprmod/ui/window_picker.py:229
+msgid "No Open Windows"
+msgstr ""
+
+#: hyprmod/ui/window_picker.py:98
+msgid "Open a window in Hyprland and try again."
+msgstr ""
+
+#: hyprmod/ui/window_picker.py:145
+#, python-brace-format
+msgid "workspace {name}"
+msgstr ""
+
+#: hyprmod/ui/window_picker.py:147
+#, python-brace-format
+msgid "workspace {id}"
+msgstr ""
+
+#: hyprmod/ui/window_picker.py:231
+msgid "Open a window in Hyprland (or click refresh) to pick from it."
+msgstr ""
+
+#: hyprmod/ui/window_rule_dialog.py:206
+msgid "Match windows where…"
+msgstr ""
+
+#: hyprmod/ui/window_rule_dialog.py:208
+msgid ""
+"Add one or more conditions. Hyprland matches windows where ALL conditions "
+"apply."
+msgstr ""
+
+#: hyprmod/ui/window_rule_dialog.py:218
+msgid "Pick from an open window"
+msgstr ""
+
+#: hyprmod/ui/window_rule_dialog.py:225
+msgid "Add a condition"
+msgstr ""
+
+#: hyprmod/ui/window_rule_dialog.py:240
+msgid "Apply these actions"
+msgstr ""
+
+#: hyprmod/ui/window_rule_dialog.py:241
+msgid "Pick what Hyprland should do when a matching window opens."
+msgstr ""
+
+#: hyprmod/ui/window_rule_dialog.py:247
+msgid "Add an action"
+msgstr ""
+
+#: hyprmod/ui/window_rule_dialog.py:625
+msgid "Remove this condition"
+msgstr ""
+
+#: hyprmod/ui/window_rule_dialog.py:775
+msgid "Remove this action"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:52
+msgid "Numeric ID"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:52
+msgid "Workspace number - e.g. 1, 2, 42."
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:53
+msgid "Named"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:53
+msgid "Named workspace - e.g. work, dev."
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:54
+msgid "Range"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:54
+msgid "Range of IDs - e.g. 1-10 (rendered as r[1-10])."
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:57
+msgid "Per-monitor"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:58
+msgid "Per-monitor index - e.g. 1 (rendered as m[1]) or 1-3 (m[1-3])."
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:194
+msgid "Which workspace(s) this rule applies to."
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:196
+msgid "Type"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:224
+msgid "Bind to monitor"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:227
+msgid ""
+"Optional - pin this workspace to a specific output. Disconnected monitors "
+"still apply when they return."
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:241
+msgid "Default for monitor"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:242
+msgid "Open this workspace automatically when the monitor connects."
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:251
+msgid "Lifecycle"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:252
+msgid "Keep the workspace alive and run a command when it first opens."
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:255
+msgid "Persistent"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:256
+msgid "Don't auto-destroy the workspace when its last window closes."
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:265
+msgid "On first map"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:266
+msgid "Run a shell command the first time this workspace is opened."
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:273
+msgid "Shell command - same syntax as ‘exec’ entries. Example: ‘kitty’."
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:283
+msgid "Appearance"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:286
+msgid ""
+"Override window decoration for this workspace. Settings left on “Use global” "
+"inherit your normal config."
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:306
+msgid "Border size override"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:307
+msgid "Set a custom border width in pixels."
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:313
+msgid "Border size (px)"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:332
+msgid "Use global"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:339
+msgid "Gaps"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:342
+msgid ""
+"Override inner/outer gaps for this workspace. Per-side mode mirrors CSS: "
+"top, right, bottom, left."
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:347
+msgid "Inner gaps"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:348
+msgid "Outer gaps"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:358
+#, python-brace-format
+msgid "{label} override"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:363
+#, python-brace-format
+msgid "{label} mode"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:364
+msgid "Single value"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:364
+msgid "Per side"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:398
+msgid ""
+"Optional - override the workspace's default display name (shown in status "
+"bars and pickers)."
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:404
+msgid "Default name override"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:405
+msgid "Set a custom display name for this workspace."
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:410
+msgid "Display name"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:499
+#, python-brace-format
+msgid "{monitor} (disconnected)"
+msgstr ""
+
+#: hyprmod/ui/workspace_rule_dialog.py:637
+msgid "(selector required)"
+msgstr ""
+
+#: hyprmod/window.py:272
+msgid ""
+"Hyprland not detected - changes will be saved to config files but not "
+"applied live"
+msgstr ""
+
+#: hyprmod/window.py:386
+msgid "Keybinds"
+msgstr ""
+
+#: hyprmod/window.py:387
+msgid "Monitors"
+msgstr ""
+
+#: hyprmod/window.py:388
+msgid "Workspaces"
+msgstr ""
+
+#: hyprmod/window.py:389
+msgid "Autostart"
+msgstr ""
+
+#: hyprmod/window.py:390
+msgid "Env Variables"
+msgstr ""
+
+#: hyprmod/window.py:391
+msgid "Window Rules"
+msgstr ""
+
+#: hyprmod/window.py:392
+msgid "Layer Rules"
+msgstr ""
+
+#: hyprmod/window.py:393
+msgid "Plugin Settings"
+msgstr ""
+
+#: hyprmod/window.py:415
+msgid "Layouts"
+msgstr ""
+
+#: hyprmod/window.py:417
+msgid "Pending Changes"
+msgstr ""
+
+#: hyprmod/window.py:435 hyprmod/window.py:438
+msgid "Search Results"
+msgstr ""
+
+#: hyprmod/window.py:467
+msgid "Review deprecated syntax…"
+msgstr ""
+
+#: hyprmod/window.py:476
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: hyprmod/window.py:477
+msgid "Report a bug"
+msgstr ""
+
+#: hyprmod/window.py:478
+msgid "About HyprMod"
+msgstr ""
+
+#: hyprmod/window.py:545
+msgid "No touchpad detected"
+msgstr ""
+
+#: hyprmod/window.py:547
+msgid "No touchscreen detected"
+msgstr ""
+
+#: hyprmod/window.py:1008
+#, python-brace-format
+msgid ""
+"{label} is set in another config file. Remove it there to get the default."
+msgstr ""
+
+#: hyprmod/window.py:1018 hyprmod/window.py:1047
+#, python-brace-format
+msgid "Failed to set {key}: {error}"
+msgstr ""

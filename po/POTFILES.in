@@ -15,6 +15,7 @@ hyprmod/pages/layouts.py
 hyprmod/pages/monitors/card.py
 hyprmod/pages/monitors/confirm_controller.py
 hyprmod/pages/monitors/page.py
+hyprmod/pages/monitors/projection_switch.py
 hyprmod/pages/pending.py
 hyprmod/pages/plugins.py
 hyprmod/pages/profiles.py
@@ -40,7 +41,11 @@ hyprmod/ui/lua_migration_controller.py
 hyprmod/ui/lua_migration_dialog.py
 hyprmod/ui/onboarding_dialog.py
 hyprmod/ui/options/color.py
+hyprmod/ui/options/combo.py
+hyprmod/ui/options/keyboard.py
 hyprmod/ui/options/multi.py
+hyprmod/ui/options/numeric.py
+hyprmod/ui/options/text.py
 hyprmod/ui/pending_chip.py
 hyprmod/ui/plugin_setting_edit_dialog.py
 hyprmod/ui/row_actions.py

@@ -1,4 +1,4 @@
-"""UI components — widgets, utilities, and layout helpers."""
+"""UI components - widgets, utilities, and layout helpers."""
 
 import functools
 from collections.abc import Callable
@@ -9,6 +9,7 @@ from gi.repository import Adw, Gdk, Gtk, Pango
 from hyprland_config import keyword_to_lua
 
 from hyprmod.core import config
+from hyprmod.i18n import _
 from hyprmod.ui.options import (  # noqa: F401
     KeyboardLayoutsOptionRow,
     OptionRow,
@@ -166,7 +167,7 @@ def try_with_toast(
             self._window.hypr.keyword(...)
             return True
         except HyprlandError as e:
-            self._window.show_bug_toast(f"... — {e}", timeout=5)
+            self._window.show_bug_toast(f"... - {e}", timeout=5)
             return False
 
     *show_bug_toast* is the bound method to call (typically
@@ -178,7 +179,7 @@ def try_with_toast(
     try:
         action()
     except catch as e:
-        show_bug_toast(f"{error_prefix} — {e}", detail=str(e), timeout=timeout)
+        show_bug_toast(f"{_(error_prefix)} - {e}", detail=str(e), timeout=timeout)
         return False
     return True
 
@@ -209,7 +210,7 @@ def build_preview_group(
     label for ``set_text(...)`` calls. The same shape is used by every
     edit dialog that previews the config line it will write.
     """
-    group = Adw.PreferencesGroup(title="Preview")
+    group = Adw.PreferencesGroup(title=_("Preview"))
     group.set_description(description)
 
     frame = Gtk.Frame()

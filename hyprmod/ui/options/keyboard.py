@@ -12,6 +12,7 @@ The row itself is a compact summary; activating it opens
 
 from gi.repository import Adw, Gtk
 
+from hyprmod.i18n import _
 from hyprmod.ui.options.base import OptionRow
 from hyprmod.ui.sources import MissingDependencyError, get_source_values
 
@@ -64,7 +65,7 @@ class KeyboardLayoutsOptionRow(OptionRow):
             self._unavailable = True
             self._all_items = []
             self._by_pair: dict[Source, dict] = {}
-            row = Adw.ActionRow(title=option.get("label", option["key"]), subtitle=str(exc))
+            row = Adw.ActionRow(title=_(option.get("label", option["key"])), subtitle=str(exc))
             row.set_sensitive(False)
             super().__init__(row, option, on_change, on_reset, on_discard)
             return
@@ -72,8 +73,8 @@ class KeyboardLayoutsOptionRow(OptionRow):
         self._by_pair = {(i["layout"], i["variant"]): i for i in self._all_items}
 
         row = Adw.ActionRow(
-            title=option.get("label", option["key"]),
-            subtitle=option.get("description", ""),
+            title=_(option.get("label", option["key"])),
+            subtitle=_(option.get("description", "")),
         )
         row.set_activatable(True)
         row.add_suffix(Gtk.Image.new_from_icon_name("go-next-symbolic"))

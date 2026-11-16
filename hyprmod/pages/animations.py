@@ -1,4 +1,4 @@
-"""Animation configuration page — flat list with detail dialogs."""
+"""Animation configuration page - flat list with detail dialogs."""
 
 from collections.abc import Iterator
 from dataclasses import replace
@@ -17,6 +17,7 @@ from hyprmod.core.ownership import OwnershipSet
 from hyprmod.core.pending import ChangeKind, PendingChange
 from hyprmod.core.undo import AnimationUndoEntry
 from hyprmod.data.bezier_data import get_curve_store
+from hyprmod.i18n import _
 from hyprmod.pages.section import SectionPage
 from hyprmod.ui.bezier_editor import BezierEditorDialog
 from hyprmod.ui.icons import ANIMATIONS_ICON
@@ -259,7 +260,7 @@ class AnimationsPage(SectionPage):
         and the set of curve names referenced."""
         lines = []
         used_curves: set[str] = set()
-        for name, _, _, _ in ANIM_FLAT:
+        for name, _state, _depth, _styles in ANIM_FLAT:
             state = self._anims.get_cached(name)
             if not state or not state.overridden:
                 continue
@@ -379,7 +380,7 @@ class AnimationsPage(SectionPage):
     def iter_pending_changes(self) -> Iterator[PendingChange]:
         if not self.is_dirty():
             return
-        for name, *_ in ANIM_FLAT:
+        for name, *_rest in ANIM_FLAT:
             if name not in ANIM_LOOKUP or not self.is_anim_dirty(name):
                 continue
             current = self._anims.get_cached(name)
@@ -387,7 +388,7 @@ class AnimationsPage(SectionPage):
             kind, subtitle = self._describe_change(name, baseline, current)
             yield PendingChange(
                 category="Animations",
-                title=ANIM_LABELS.get(name, name),
+                title=_(ANIM_LABELS.get(name, name)),
                 subtitle=subtitle,
                 kind=kind,
                 revert=lambda n=name: self.revert_anim(n),
@@ -407,24 +408,25 @@ class AnimationsPage(SectionPage):
         if was_owned and not is_owned:
             return "removed", "remove override on save"
         if not was_owned and is_owned and (baseline is None or not baseline.overridden):
-            return "added", "new override"
+            return "added", _("new override")
 
         # Field-level diff between baseline and current
         if baseline is None or current is None:
-            return "modified", "updated"
+            return "modified", _("updated")
 
         diffs: list[str] = []
         if baseline.enabled != current.enabled:
             diffs.append(
-                f"{'on' if baseline.enabled else 'off'} → {'on' if current.enabled else 'off'}"
+                f"{_('on') if baseline.enabled else _('off')} → "
+                f"{_('on') if current.enabled else _('off')}"
             )
         if abs(baseline.speed - current.speed) > 1e-6:
-            diffs.append(f"speed {baseline.speed:g} → {current.speed:g}")
+            diffs.append(f"{_('speed')} {baseline.speed:g} → {current.speed:g}")
         if (baseline.curve or "") != (current.curve or ""):
-            diffs.append(f"curve {baseline.curve or '—'} → {current.curve or '—'}")
+            diffs.append(f"{_('curve')} {baseline.curve or ' - '} → {current.curve or ' - '}")
         if (baseline.style or "") != (current.style or ""):
-            diffs.append(f"style {baseline.style or '—'} → {current.style or '—'}")
-        return "modified", " · ".join(diffs) if diffs else "updated"
+            diffs.append(f"{_('style')} {baseline.style or ' - '} → {current.style or ' - '}")
+        return "modified", " · ".join(diffs) if diffs else _("updated")
 
     # -- UI building --
 
@@ -460,8 +462,8 @@ class AnimationsPage(SectionPage):
                 continue
             group = Adw.PreferencesGroup(title=GLib.markup_escape_text(grp_name))
 
-            for _, entries in cat_list:
-                has_children = any(depth > 1 for _, _, depth, _ in entries)
+            for _category, entries in cat_list:
+                has_children = any(depth > 1 for _name, _label, depth, _styles_unused in entries)
                 parent_row = None
 
                 for name, _parent, depth, _styles in entries:
@@ -486,8 +488,8 @@ class AnimationsPage(SectionPage):
         """Build the Bezier Curve Editor row as a standalone group."""
         group = Adw.PreferencesGroup()
         curves_row = Adw.ActionRow(
-            title="Bezier Curve Editor",
-            subtitle="Create and manage animation curves",
+            title=_("Bezier Curve Editor"),
+            subtitle=_("Create and manage animation curves"),
         )
         curves_row.add_prefix(Gtk.Image.new_from_icon_name("draw-arc-symbolic"))
         curves_row.add_suffix(Gtk.Image.new_from_icon_name("go-next-symbolic"))
@@ -528,9 +530,9 @@ class _AnimRow:
         self._signals = SignalBlocker()
 
         if is_parent:
-            self._row = Adw.ExpanderRow(title=ANIM_LABELS.get(name, name))
+            self._row = Adw.ExpanderRow(title=_(ANIM_LABELS.get(name, name)))
         else:
-            self._row = Adw.ActionRow(title=ANIM_LABELS.get(name, name))
+            self._row = Adw.ActionRow(title=_(ANIM_LABELS.get(name, name)))
             self._row.set_activatable(True)
             self._row.connect("activated", self._on_activated)
 
@@ -545,7 +547,7 @@ class _AnimRow:
             edit_btn = Gtk.Button(icon_name="menu-symbolic")
             edit_btn.set_valign(Gtk.Align.CENTER)
             edit_btn.add_css_class("flat")
-            edit_btn.set_tooltip_text("Edit animation settings")
+            edit_btn.set_tooltip_text(_("Edit animation settings"))
             edit_btn.connect("clicked", lambda _b: self._on_activated(None))
             self._row.add_suffix(edit_btn)
 
@@ -626,7 +628,7 @@ class _AnimDetailDialog:
         eff_en, eff_sp, eff_cu, eff_st = page.anims.get_effective(name)
 
         self._dialog = Adw.Dialog()
-        self._dialog.set_title(ANIM_LABELS.get(name, name))
+        self._dialog.set_title(_(ANIM_LABELS.get(name, name)))
         self._dialog.set_content_width(400)
         self._dialog.set_follows_content_size(True)
 
@@ -643,7 +645,7 @@ class _AnimDetailDialog:
         # Inherited note
         if state and not state.overridden:
             note = Gtk.Label(
-                label="Inherits from parent. Editing will create an override.",
+                label=_("Inherits from parent. Editing will create an override."),
             )
             note.set_wrap(True)
             note.add_css_class("dim-label")
@@ -663,8 +665,8 @@ class _AnimDetailDialog:
         self._speed_spin = Gtk.SpinButton(adjustment=speed_adj, digits=1)
         self._speed_spin.set_valign(Gtk.Align.CENTER)
         self._speed_row = Adw.ActionRow(
-            title="Speed",
-            subtitle="Duration in deciseconds (1 = 100ms)",
+            title=_("Speed"),
+            subtitle=_("Duration in deciseconds (1 = 100ms)"),
         )
         self._speed_row.add_suffix(self._speed_spin)
         self._signals.connect(self._speed_spin, "value-changed", self._on_speed)
@@ -674,8 +676,8 @@ class _AnimDetailDialog:
         self._curve_names = get_curve_store().get_all_curve_names()
         curve_model = Gtk.StringList.new(_curve_display_names(self._curve_names))
         self._curve_row = Adw.ComboRow(
-            title="Curve",
-            subtitle="Bezier easing curve",
+            title=_("Curve"),
+            subtitle=_("Bezier easing curve"),
             model=curve_model,
         )
         if eff_cu in self._curve_names:
@@ -685,7 +687,7 @@ class _AnimDetailDialog:
         edit_btn = Gtk.Button(icon_name="draw-arc-symbolic")
         edit_btn.set_valign(Gtk.Align.CENTER)
         edit_btn.add_css_class("flat")
-        edit_btn.set_tooltip_text("Edit curve")
+        edit_btn.set_tooltip_text(_("Edit curve"))
         edit_btn.connect("clicked", self._on_edit_curve)
         self._curve_row.add_suffix(edit_btn)
         group.add(self._curve_row)
@@ -697,8 +699,8 @@ class _AnimDetailDialog:
             self._style_names = style_options
             style_model = Gtk.StringList.new(style_options)
             self._style_row = Adw.ComboRow(
-                title="Style",
-                subtitle="Animation style",
+                title=_("Style"),
+                subtitle=_("Animation style"),
                 model=style_model,
             )
             base_style = eff_st.split()[0] if eff_st else ""

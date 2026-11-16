@@ -38,6 +38,7 @@ from hyprmod.core.autostart import (
 )
 from hyprmod.core.desktop_apps import DesktopApp, list_apps, match_command
 from hyprmod.core.ownership import SavedList
+from hyprmod.i18n import _
 from hyprmod.pages.section import SavedListSectionPage
 from hyprmod.ui import make_inline_hint, make_page_layout
 from hyprmod.ui.app_picker import AppPickerDialog
@@ -115,11 +116,13 @@ class AutostartPage(SavedListSectionPage[ExecData]):
         page_header = header or Adw.HeaderBar()
 
         add_btn = Gtk.Button(icon_name="list-add-symbolic")
-        add_btn.set_tooltip_text("Add autostart entry")
+        add_btn.set_tooltip_text(_("Add autostart entry"))
         add_btn.connect("clicked", lambda _b: self._on_add())
         page_header.pack_start(add_btn)
 
-        toolbar_view, _, self._content_box, self._scrolled = make_page_layout(header=page_header)
+        toolbar_view, _toolbar_view_unused, self._content_box, self._scrolled = make_page_layout(
+            header=page_header
+        )
 
         self._rebuild_list()
         return toolbar_view
@@ -128,8 +131,10 @@ class AutostartPage(SavedListSectionPage[ExecData]):
 
     def _build_order_hint(self) -> Gtk.Widget:
         return make_inline_hint(
-            "Reorder entries by dragging them within their group, "
-            "or with Alt+↑ / Alt+↓ on a focused row."
+            _(
+                "Reorder entries by dragging them within their group, "
+                "or with Alt+↑ / Alt+↓ on a focused row."
+            )
         )
 
     def _build_managed_groups(self) -> list[Gtk.Widget]:
@@ -161,7 +166,9 @@ class AutostartPage(SavedListSectionPage[ExecData]):
         add_btn = Gtk.Button(icon_name="list-add-symbolic")
         add_btn.set_valign(Gtk.Align.CENTER)
         add_btn.add_css_class("flat")
-        add_btn.set_tooltip_text(f"Add another entry that runs {label.lower()}")
+        add_btn.set_tooltip_text(
+            _("Add another entry that runs {label}").format(label=label.lower())
+        )
         add_btn.connect(
             "clicked",
             lambda _b, kw=keyword: self._on_add(default_advanced=kw == config.KEYWORD_EXEC),
@@ -181,8 +188,8 @@ class AutostartPage(SavedListSectionPage[ExecData]):
         dialog.
         """
         return EmptyState(
-            title="No Autostart Entries",
-            description="Add programs that should launch automatically when Hyprland starts.",
+            title=_("No Autostart Entries"),
+            description=_("Add programs that should launch automatically when Hyprland starts."),
             icon_name=AUTOSTART_ICON,
             primary_action=("Pick from Installed Apps", self._on_quick_pick),
             secondary_action=("Custom Command…", self._on_add),
@@ -279,7 +286,7 @@ class AutostartPage(SavedListSectionPage[ExecData]):
         run_btn = Gtk.Button(icon_name="system-run-symbolic")
         run_btn.set_valign(Gtk.Align.CENTER)
         run_btn.add_css_class("flat")
-        run_btn.set_tooltip_text("Run this command now")
+        run_btn.set_tooltip_text(_("Run this command now"))
         run_btn.connect("clicked", lambda _b, e=item: self._run_now(e))
         row.add_suffix(run_btn)
 
@@ -299,9 +306,11 @@ class AutostartPage(SavedListSectionPage[ExecData]):
 
     def _build_external_hint(self) -> Gtk.Widget:
         return make_inline_hint(
-            "Entries below come from your hyprland.conf or its sourced "
-            "files and already run at Hyprland startup or reload. Edit "
-            "those files directly to change them.",
+            _(
+                "Entries below come from your hyprland.conf or its sourced "
+                "files and already run at Hyprland startup or reload. Edit "
+                "those files directly to change them."
+            ),
             icon_name="changes-prevent-symbolic",
         )
 
@@ -434,7 +443,9 @@ class AutostartPage(SavedListSectionPage[ExecData]):
         try:
             tokens = shlex.split(cmd)
         except ValueError as e:
-            self._window.show_toast(f"Couldn't parse command: {e}", timeout=4, copy=True)
+            self._window.show_toast(
+                _("Couldn't parse command: {error}").format(error=e), timeout=4, copy=True
+            )
             return
         try:
             subprocess.Popen(  # noqa: S603 — user-supplied autostart command, by design
@@ -444,9 +455,11 @@ class AutostartPage(SavedListSectionPage[ExecData]):
                 stderr=subprocess.DEVNULL,
             )
         except (OSError, FileNotFoundError) as e:
-            self._window.show_toast(f"Failed to run: {e}", timeout=5, copy=True)
+            self._window.show_toast(
+                _("Failed to run: {error}").format(error=e), timeout=5, copy=True
+            )
             return
-        self._window.show_toast(f"Started: {cmd}")
+        self._window.show_toast(_("Started: {command}").format(command=cmd))
 
     # ── Save plumbing ──
 

@@ -14,6 +14,7 @@ from collections.abc import Callable
 from gi.repository import Gtk
 
 from hyprmod.core.config import LUA_MIN_VERSION
+from hyprmod.i18n import _
 
 
 def _min_version_label() -> str:
@@ -68,7 +69,7 @@ class LuaMigrationBanner(Gtk.Revealer):
             )
         else:
             text = (
-                f"Hyprland {_min_version_label()} recommends Lua configs — "
+                f"Hyprland {_min_version_label()} recommends Lua configs - "
                 "migrate your hyprland.conf with one click"
             )
         label = Gtk.Label(label=text)
@@ -77,16 +78,16 @@ class LuaMigrationBanner(Gtk.Revealer):
         label.set_wrap(True)
         box.append(label)
 
-        migrate_btn = Gtk.Button(label="Migrate to Lua…")
+        migrate_btn = Gtk.Button(label=_("Migrate to Lua…"))
         migrate_btn.add_css_class("suggested-action")
         migrate_btn.connect("clicked", lambda _b: on_migrate())
         box.append(migrate_btn)
 
         if not stranded:
-            # Icon-only "Don't show again" — close-symbolic reads as "make
+            # Icon-only "Don't show again" - close-symbolic reads as "make
             # this go away," and the tooltip clarifies that it's permanent.
             dismiss_btn = Gtk.Button.new_from_icon_name("window-close-symbolic")
-            dismiss_btn.set_tooltip_text("Don't show again")
+            dismiss_btn.set_tooltip_text(_("Don't show again"))
             dismiss_btn.add_css_class("flat")
             dismiss_btn.connect("clicked", lambda _b: on_dismiss())
             box.append(dismiss_btn)

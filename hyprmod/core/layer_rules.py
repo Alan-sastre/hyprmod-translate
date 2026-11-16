@@ -68,6 +68,7 @@ from hyprland_config import (
 
 from hyprmod.core import config
 from hyprmod.core.external import load_external_rule_entries
+from hyprmod.i18n import N_, _
 
 
 def _predates_v3_layerrule(version: str) -> bool:
@@ -308,50 +309,50 @@ class LayerActionPreset:
 LAYER_ACTION_PRESETS: tuple[LayerActionPreset, ...] = (
     LayerActionPreset(
         id="blur",
-        label="Blur background",
-        description="Apply backdrop blur behind this layer surface (e.g. waybar, rofi).",
+        label=N_("Blur background"),
+        description=N_("Apply backdrop blur behind this layer surface (e.g. waybar, rofi)."),
     ),
     LayerActionPreset(
         id="blur_popups",
-        label="Blur popups",
-        description="Also blur popup surfaces spawned above this layer.",
+        label=N_("Blur popups"),
+        description=N_("Also blur popup surfaces spawned above this layer."),
     ),
     LayerActionPreset(
         id="dim_around",
-        label="Dim everything else",
-        description=(
+        label=N_("Dim everything else"),
+        description=N_(
             "Dim the background while this surface is mapped. "
             "Typical for app launchers like rofi or wofi."
         ),
     ),
     LayerActionPreset(
         id="no_anim",
-        label="No animations",
-        description="Disable open/close animations for this surface.",
+        label=N_("No animations"),
+        description=N_("Disable open/close animations for this surface."),
     ),
     LayerActionPreset(
         id="xray",
-        label="Xray (see-through blur)",
-        description=(
+        label=N_("Xray (see-through blur)"),
+        description=N_(
             "Make blur look through other windows instead of blurring them. "
             "Overrides ‘decoration:blur:xray’ for this surface."
         ),
     ),
     LayerActionPreset(
         id="no_screen_share",
-        label="Exclude from screen share",
-        description=(
+        label=N_("Exclude from screen share"),
+        description=N_(
             "Hide this surface from screen-sharing captures. "
             "Useful for notification daemons or password prompts."
         ),
     ),
     LayerActionPreset(
         id="ignore_alpha",
-        label="Ignore alpha below threshold",
-        description="Treat pixels below this alpha as not present when computing blur.",
+        label=N_("Ignore alpha below threshold"),
+        description=N_("Treat pixels below this alpha as not present when computing blur."),
         fields=(
             LayerActionField(
-                label="Threshold",
+                label=N_("Threshold"),
                 kind="number",
                 digits=2,
                 min_value=0.0,
@@ -363,26 +364,28 @@ LAYER_ACTION_PRESETS: tuple[LayerActionPreset, ...] = (
     ),
     LayerActionPreset(
         id="animation",
-        label="Animation style",
-        description="Override the open/close animation for this surface.",
+        label=N_("Animation style"),
+        description=N_("Override the open/close animation for this surface."),
         fields=(
             LayerActionField(
-                label="Style",
+                label=N_("Style"),
                 placeholder="slide",
-                hint="One of: slide, popin, fade, none. (Style names depend on Hyprland version.)",
+                hint=N_(
+                    "One of: slide, popin, fade, none. (Style names depend on Hyprland version.)"
+                ),
             ),
         ),
     ),
     LayerActionPreset(
         id="order",
-        label="Render order",
-        description=(
+        label=N_("Render order"),
+        description=N_(
             "Sort key within a layer; surfaces with higher values render on top. "
             "Useful when two surfaces share a level."
         ),
         fields=(
             LayerActionField(
-                label="Order",
+                label=N_("Order"),
                 kind="number",
                 digits=0,
                 min_value=-100,
@@ -394,21 +397,21 @@ LAYER_ACTION_PRESETS: tuple[LayerActionPreset, ...] = (
     ),
     LayerActionPreset(
         id="above_lock",
-        label="Show above lockscreen",
-        description=(
+        label=N_("Show above lockscreen"),
+        description=N_(
             "Allow this layer to render above the session lock. "
             "0 = below (default), 1 = above input fields, 2 = above everything."
         ),
         fields=(
             LayerActionField(
-                label="Level",
+                label=N_("Level"),
                 kind="number",
                 digits=0,
                 min_value=0,
                 max_value=2,
                 step=1,
                 default="1",
-                hint="0 = below lock; 1 = above input; 2 = above everything.",
+                hint=N_("0 = below lock; 1 = above input; 2 = above everything."),
             ),
         ),
     ),
@@ -420,16 +423,16 @@ LAYER_ACTION_PRESETS_BY_ID: dict[str, LayerActionPreset] = {p.id: p for p in LAY
 # The single field holds the entire rule verbatim (name + args).
 CUSTOM_PRESET: LayerActionPreset = LayerActionPreset(
     id="__custom__",
-    label="Custom rule…",
-    description=(
+    label=N_("Custom rule…"),
+    description=N_(
         "Type any layerrule effect verbatim, including plugin rules "
         "or values introduced in newer Hyprland versions."
     ),
     fields=(
         LayerActionField(
-            label="Rule",
+            label=N_("Rule"),
             placeholder="plugin:foo bar",
-            hint=(
+            hint=N_(
                 "The full effect text including any args, exactly as it "
                 "would appear inside a layerrule line."
             ),
@@ -688,19 +691,19 @@ def _summarize_one_effect(effect: LayerEffect) -> str:
     preset = LAYER_ACTION_PRESETS_BY_ID.get(effect.name)
     if preset is None:
         full = effect.full
-        return full or "(no rule)"
+        return full or _("(no rule)")
     args = effect.args.strip()
     # Bool effects auto-fill ``on`` on serialization but read cleaner
     # in the title without the redundant value.
     if not args or args.lower() == "on":
-        return preset.label
-    return f"{preset.label}: {args}"
+        return _(preset.label)
+    return f"{_(preset.label)}: {args}"
 
 
 def summarize_action(rule: LayerRule) -> str:
     """Friendly label for a rule's effects, multi-effect joined with ``+``."""
     if not rule.effects:
-        return "(no rule)"
+        return _("(no rule)")
     if len(rule.effects) == 1:
         return _summarize_one_effect(rule.effects[0])
     return " + ".join(_summarize_one_effect(e) for e in rule.effects)
@@ -708,7 +711,7 @@ def summarize_action(rule: LayerRule) -> str:
 
 def summarize_namespace(rule: LayerRule) -> str:
     """Plain-English summary of the namespace clause."""
-    return f"namespace: {rule.namespace}"
+    return _("namespace: {namespace}").format(namespace=rule.namespace)
 
 
 def summarize_rule(rule: LayerRule) -> tuple[str, str]:
@@ -717,7 +720,7 @@ def summarize_rule(rule: LayerRule) -> tuple[str, str]:
     if rule.name:
         subtitle = f"{subtitle} · {rule.name}"
     if not rule.enabled:
-        subtitle = f"{subtitle} (disabled)"
+        subtitle = f"{subtitle} " + _("(disabled)")
     return summarize_action(rule), subtitle
 
 

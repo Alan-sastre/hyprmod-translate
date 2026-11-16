@@ -17,6 +17,7 @@ from hyprland_config import ParseError, value_to_conf
 from hyprmod.core import config, schema
 from hyprmod.core.pending import ChangeKind, PendingChange
 from hyprmod.core.state import OptionState
+from hyprmod.i18n import _, ngettext
 from hyprmod.ui import clear_children, make_page_layout
 from hyprmod.ui.diff import ConfigDiffWidget
 from hyprmod.ui.empty_state import EmptyState
@@ -96,7 +97,7 @@ class PendingChangesPage:
     # ── Build ──
 
     def build(self, header: Adw.HeaderBar) -> Adw.ToolbarView:
-        toolbar, _, content_box, _ = make_page_layout(header=header)
+        toolbar, _toolbar_unused, content_box, _fourth_unused = make_page_layout(header=header)
         self._toolbar = toolbar
         self._content_box = content_box
 
@@ -106,9 +107,9 @@ class PendingChangesPage:
         content_box.append(self._summary_label)
 
         self._empty_state = EmptyState(
-            title="No Pending Changes",
+            title=_("No Pending Changes"),
             description=(
-                "Edits made on any page will appear here for you to review before saving."
+                _("Edits made on any page will appear here for you to review before saving.")
             ),
             icon_name="emblem-ok-symbolic",
         )
@@ -120,9 +121,9 @@ class PendingChangesPage:
         # Diff section — hidden when there are no changes (saved file already
         # matches what the next save would write).
         diff_group = Adw.PreferencesGroup()
-        diff_group.set_title("Config diff preview")
+        diff_group.set_title(_("Config diff preview"))
         diff_group.set_description(
-            "Comparison between the saved config and what the next save would write."
+            _("Comparison between the saved config and what the next save would write.")
         )
 
         diff_card = Gtk.Frame()
@@ -191,7 +192,9 @@ class PendingChangesPage:
             return
 
         summary_label.set_visible(True)
-        summary_label.set_label(f"{total} unsaved change{'s' if total != 1 else ''}")
+        summary_label.set_label(
+            ngettext("1 unsaved change", "{n} unsaved changes", total).format(n=total)
+        )
         empty_state.set_visible(False)
         groups_box.set_visible(True)
 
@@ -199,9 +202,9 @@ class PendingChangesPage:
             cat_changes = by_cat.get(cat)
             if not cat_changes:
                 continue
-            group = Adw.PreferencesGroup(title=cat)
+            group = Adw.PreferencesGroup(title=_(cat))
             group.set_description(
-                f"{len(cat_changes)} change" + ("s" if len(cat_changes) != 1 else "")
+                ngettext("1 change", "{n} changes", len(cat_changes)).format(n=len(cat_changes))
             )
             for change in cat_changes:
                 row = self._make_row(change)
@@ -219,7 +222,7 @@ class PendingChangesPage:
 
         # Kind badge ("Modified" / "Added" / "Removed")
         badge_label, badge_class = _KIND_BADGE[change.kind]
-        badge = Gtk.Label(label=badge_label)
+        badge = Gtk.Label(label=_(badge_label))
         badge.add_css_class("pending-badge")
         badge.add_css_class(badge_class)
         badge.set_valign(Gtk.Align.CENTER)
@@ -227,7 +230,7 @@ class PendingChangesPage:
 
         # Discard button — primary action for the row
         discard_btn = Gtk.Button(icon_name="edit-undo-symbolic")
-        discard_btn.set_tooltip_text("Revert this change")
+        discard_btn.set_tooltip_text(_("Revert this change"))
         discard_btn.set_valign(Gtk.Align.CENTER)
         discard_btn.add_css_class("flat")
 
@@ -350,7 +353,7 @@ class PendingChangesPage:
             result.append(
                 PendingChange(
                     category="Options",
-                    title=label,
+                    title=_(label),
                     subtitle=f"{key} · {subtitle}",
                     kind=kind,
                     revert=lambda k=key: win.discard_option(k),
@@ -375,11 +378,11 @@ class PendingChangesPage:
 
         # Override added (was unmanaged, now a value is set)
         if not state.saved_managed and state.managed:
-            return "added", f"set to {new_str or '—'}"
+            return "added", f"set to {new_str or ' - '}"
         # Override removed (was managed, no longer)
         if state.saved_managed and not state.managed:
             return "removed", "removing override"
         # Same managed flag, value changed
         if old_str != new_str:
-            return "modified", f"{old_str or '—'} → {new_str or '—'}"
+            return "modified", f"{old_str or ' - '} → {new_str or ' - '}"
         return "modified", "value updated"

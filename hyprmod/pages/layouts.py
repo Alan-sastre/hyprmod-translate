@@ -19,6 +19,7 @@ from typing import TYPE_CHECKING
 from gi.repository import Adw, Gtk
 
 from hyprmod.core import schema
+from hyprmod.i18n import _
 from hyprmod.ui import make_page_layout
 
 if TYPE_CHECKING:
@@ -47,7 +48,9 @@ class LayoutsPage:
         self._key_to_layout: dict[str, str] = {}
 
     def build(self, header: Adw.HeaderBar) -> Adw.ToolbarView:
-        toolbar_view, _, content_box, _ = make_page_layout(header=header)
+        toolbar_view, _toolbar_view_unused, content_box, _fourth_unused = make_page_layout(
+            header=header
+        )
 
         view_stack = Adw.ViewStack()
         view_stack.set_vexpand(True)
@@ -100,7 +103,7 @@ class LayoutsPage:
         scrolled.set_vexpand(True)
 
         icon = group.get("icon", "")
-        view_stack.add_titled_with_icon(scrolled, group["id"], group["label"], icon)
+        view_stack.add_titled_with_icon(scrolled, group["id"], _(group["label"]), icon)
 
         for section in group.get("sections", []):
             for option in section.get("options", []):

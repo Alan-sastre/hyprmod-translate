@@ -1,10 +1,11 @@
-"""Global option search — finds options across all schema groups."""
+"""Global option search - finds options across all schema groups."""
 
 from html import escape as html_escape
 
 from gi.repository import Adw, Gtk
 
 from hyprmod.core import schema as schema_mod
+from hyprmod.i18n import _, ngettext
 from hyprmod.ui.empty_state import EmptyState
 
 MIN_QUERY_LENGTH = 2
@@ -15,8 +16,8 @@ class SearchResultRow(Adw.ActionRow):
 
     def __init__(self, option: dict, group_label: str, section_label: str):
         super().__init__(
-            title=html_escape(option.get("label", option["key"])),
-            subtitle=html_escape(f"{group_label} \u203a {section_label}"),
+            title=html_escape(_(option.get("label", option["key"]))),
+            subtitle=html_escape(f"{_(group_label)} \u203a {_(section_label)}"),
         )
         self.set_activatable(True)
         self.option_key = option["key"]
@@ -54,7 +55,9 @@ class SearchPage:
                     # Searchable text
                     entry["_search_text"] = (
                         f"{option.get('label', '')} "
+                        f"{_(option.get('label', ''))} "
                         f"{option.get('description', '')} "
+                        f"{_(option.get('description', ''))} "
                         f"{option.get('key', '')}"
                     ).lower()
                     result.append(entry)
@@ -87,8 +90,8 @@ class SearchPage:
         """Build a widget showing search results."""
         if not results:
             return EmptyState(
-                title="No Results",
-                description="Try a different search term.",
+                title=_("No Results"),
+                description=_("Try a different search term."),
                 icon_name="edit-find-symbolic",
             )
 
@@ -98,9 +101,9 @@ class SearchPage:
         box.set_margin_start(12)
         box.set_margin_end(12)
 
-        group = Adw.PreferencesGroup(
-            title=f"{len(results)} result{'s' if len(results) != 1 else ''}",
-        )
+        count = len(results)
+        title = ngettext("{count} result", "{count} results", count).format(count=count)
+        group = Adw.PreferencesGroup(title=title)
 
         for opt in results:
             row = SearchResultRow(

@@ -25,6 +25,7 @@ from hyprland_config import (
 
 from hyprmod.constants import APPLICATION_ID
 from hyprmod.core import config
+from hyprmod.i18n import N_
 
 
 def _predates_v3_windowrule(version: str) -> bool:
@@ -299,68 +300,70 @@ class ActionPreset:
 ACTION_PRESETS: tuple[ActionPreset, ...] = (
     ActionPreset(
         id="float",
-        label="Float window",
-        description="Open the window detached from the tiling layout.",
+        label=N_("Float window"),
+        description=N_("Open the window detached from the tiling layout."),
     ),
     ActionPreset(
         id="tile",
-        label="Tile window",
-        description="Force the window into the tiling layout.",
+        label=N_("Tile window"),
+        description=N_("Force the window into the tiling layout."),
     ),
     ActionPreset(
         id="pin",
-        label="Pin to all workspaces",
-        description="Window stays visible across workspace switches (floating only).",
+        label=N_("Pin to all workspaces"),
+        description=N_("Window stays visible across workspace switches (floating only)."),
     ),
     ActionPreset(
         id="center",
-        label="Center on monitor",
-        description="Center the window on its monitor (floating only).",
+        label=N_("Center on monitor"),
+        description=N_("Center the window on its monitor (floating only)."),
     ),
     ActionPreset(
         id="fullscreen",
-        label="Fullscreen",
-        description="Open the window fullscreen.",
+        label=N_("Fullscreen"),
+        description=N_("Open the window fullscreen."),
     ),
     ActionPreset(
         id="maximize",
-        label="Maximize",
-        description="Open the window maximized.",
+        label=N_("Maximize"),
+        description=N_("Open the window maximized."),
     ),
     ActionPreset(
         id="workspace",
-        label="Open on workspace",
-        description="Send the window to a specific workspace on spawn.",
+        label=N_("Open on workspace"),
+        description=N_("Send the window to a specific workspace on spawn."),
         fields=(
             ActionField(
-                label="Workspace",
+                label=N_("Workspace"),
                 placeholder="1",
                 hint=(
-                    "Workspace id (e.g. 1) or name (e.g. name:work). "
-                    "Append ' silent' to open without focusing."
+                    N_(
+                        "Workspace id (e.g. 1) or name (e.g. name:work). "
+                        "Append ' silent' to open without focusing."
+                    )
                 ),
             ),
         ),
     ),
     ActionPreset(
         id="monitor",
-        label="Open on monitor",
-        description="Send the window to a specific monitor on spawn.",
+        label=N_("Open on monitor"),
+        description=N_("Send the window to a specific monitor on spawn."),
         fields=(
             ActionField(
-                label="Monitor",
+                label=N_("Monitor"),
                 placeholder="DP-1",
-                hint="Monitor name (e.g. DP-1) or numeric index.",
+                hint=N_("Monitor name (e.g. DP-1) or numeric index."),
             ),
         ),
     ),
     ActionPreset(
         id="size",
-        label="Set size",
-        description="Set the window's initial size (floating only).",
+        label=N_("Set size"),
+        description=N_("Set the window's initial size (floating only)."),
         fields=(
             ActionField(
-                label="Width",
+                label=N_("Width"),
                 placeholder="1280",
                 kind="number",
                 digits=0,
@@ -369,7 +372,7 @@ ACTION_PRESETS: tuple[ActionPreset, ...] = (
                 default="1280",
             ),
             ActionField(
-                label="Height",
+                label=N_("Height"),
                 placeholder="720",
                 kind="number",
                 digits=0,
@@ -381,11 +384,11 @@ ACTION_PRESETS: tuple[ActionPreset, ...] = (
     ),
     ActionPreset(
         id="move",
-        label="Set position",
-        description="Set the window's initial position. Two space-separated expressions.",
+        label=N_("Set position"),
+        description=N_("Set the window's initial position. Two space-separated expressions."),
         fields=(
             ActionField(
-                label="X",
+                label=N_("X"),
                 placeholder="100",
                 kind="number",
                 digits=0,
@@ -395,7 +398,7 @@ ACTION_PRESETS: tuple[ActionPreset, ...] = (
                 default="100",
             ),
             ActionField(
-                label="Y",
+                label=N_("Y"),
                 placeholder="100",
                 kind="number",
                 digits=0,
@@ -408,14 +411,16 @@ ACTION_PRESETS: tuple[ActionPreset, ...] = (
     ),
     ActionPreset(
         id="opacity",
-        label="Set opacity",
+        label=N_("Set opacity"),
         description=(
-            "Override active and inactive opacity. Append ' override' to "
-            "set absolutely (else multiplied)."
+            N_(
+                "Override active and inactive opacity. Append ' override' to "
+                "set absolutely (else multiplied)."
+            )
         ),
         fields=(
             ActionField(
-                label="Active",
+                label=N_("Active"),
                 kind="number",
                 digits=2,
                 min_value=0.0,
@@ -424,8 +429,8 @@ ACTION_PRESETS: tuple[ActionPreset, ...] = (
                 default="1.00",
             ),
             ActionField(
-                label="Inactive",
-                hint="Leave blank to use the active value for both.",
+                label=N_("Inactive"),
+                hint=N_("Leave blank to use the active value for both."),
                 kind="number",
                 digits=2,
                 min_value=0.0,
@@ -437,11 +442,11 @@ ACTION_PRESETS: tuple[ActionPreset, ...] = (
     ),
     ActionPreset(
         id="rounding",
-        label="Set corner rounding",
-        description="Override the corner rounding (in pixels) for this window.",
+        label=N_("Set corner rounding"),
+        description=N_("Override the corner rounding (in pixels) for this window."),
         fields=(
             ActionField(
-                label="Pixels",
+                label=N_("Pixels"),
                 kind="number",
                 digits=0,
                 max_value=200,
@@ -452,63 +457,65 @@ ACTION_PRESETS: tuple[ActionPreset, ...] = (
     ),
     ActionPreset(
         id="opaque",
-        label="Force opaque",
-        description="Disable transparency for this window.",
+        label=N_("Force opaque"),
+        description=N_("Disable transparency for this window."),
     ),
     ActionPreset(
         id="no_blur",
-        label="No blur",
-        description="Disable background blur behind this window.",
+        label=N_("No blur"),
+        description=N_("Disable background blur behind this window."),
     ),
     ActionPreset(
         id="no_shadow",
-        label="No shadow",
-        description="Disable the drop shadow for this window.",
+        label=N_("No shadow"),
+        description=N_("Disable the drop shadow for this window."),
     ),
     ActionPreset(
         id="no_anim",
-        label="No animations",
-        description="Disable open/close animations for this window.",
+        label=N_("No animations"),
+        description=N_("Disable open/close animations for this window."),
     ),
     ActionPreset(
         id="no_initial_focus",
-        label="No initial focus",
-        description="Don't focus the window when it spawns.",
+        label=N_("No initial focus"),
+        description=N_("Don't focus the window when it spawns."),
     ),
     ActionPreset(
         id="no_focus",
-        label="Never focusable",
-        description="Hyprland will never focus this window (e.g. legacy XWayland helpers).",
+        label=N_("Never focusable"),
+        description=N_("Hyprland will never focus this window (e.g. legacy XWayland helpers)."),
     ),
     ActionPreset(
         id="stay_focused",
-        label="Stay focused",
-        description="Window keeps focus even when others would steal it.",
+        label=N_("Stay focused"),
+        description=N_("Window keeps focus even when others would steal it."),
     ),
     ActionPreset(
         id="idle_inhibit",
-        label="Inhibit idle",
-        description="Prevent idle/screensaver while this window is around.",
+        label=N_("Inhibit idle"),
+        description=N_("Prevent idle/screensaver while this window is around."),
         fields=(
             ActionField(
-                label="Mode",
+                label=N_("Mode"),
                 placeholder="focus",
-                hint="One of: none, always, focus, fullscreen.",
+                hint=N_("One of: none, always, focus, fullscreen."),
                 default="focus",
             ),
         ),
     ),
     ActionPreset(
         id="suppress_event",
-        label="Suppress event",
-        description="Tell Hyprland to ignore a class of events from this window.",
+        label=N_("Suppress event"),
+        description=N_("Tell Hyprland to ignore a class of events from this window."),
         fields=(
             ActionField(
-                label="Event",
+                label=N_("Event"),
                 placeholder="activatefocus",
                 hint=(
-                    "Space-separated: activate, activatefocus, "
-                    "fullscreen, maximize, fullscreenoutput."
+                    N_(
+                        "Space-separated: activate, activatefocus, "
+                        "fullscreen, maximize, fullscreenoutput."
+                    )
                 ),
             ),
         ),
@@ -522,13 +529,13 @@ ACTION_PRESETS_BY_ID: dict[str, ActionPreset] = {p.id: p for p in ACTION_PRESETS
 # effect name and any args (e.g. ``plugin:foo:bar arg1``).
 CUSTOM_PRESET: ActionPreset = ActionPreset(
     id="__custom__",
-    label="Custom action…",
-    description="Type any Hyprland action verbatim, including plugin actions.",
+    label=N_("Custom action…"),
+    description=N_("Type any Hyprland action verbatim, including plugin actions."),
     fields=(
         ActionField(
-            label="Action",
+            label=N_("Action"),
             placeholder="plugin:foo:bar arg1 arg2",
-            hint="The full action string as it would appear before the comma.",
+            hint=N_("The full action string as it would appear before the comma."),
         ),
     ),
 )
@@ -558,75 +565,75 @@ class MatcherKind:
 MATCHER_KINDS: tuple[MatcherKind, ...] = (
     MatcherKind(
         key="class",
-        label="Window class",
-        description="Match by app class (e.g. firefox, kitty). Regex.",
+        label=N_("Window class"),
+        description=N_("Match by app class (e.g. firefox, kitty). Regex."),
         placeholder="^(firefox)$",
     ),
     MatcherKind(
         key="title",
-        label="Window title",
-        description="Match by window title text. Regex.",
+        label=N_("Window title"),
+        description=N_("Match by window title text. Regex."),
         placeholder="^(.*Mozilla Firefox)$",
     ),
     MatcherKind(
         key="initial_class",
-        label="Initial class",
-        description="Class at spawn time, before the app sets a different one. Regex.",
+        label=N_("Initial class"),
+        description=N_("Class at spawn time, before the app sets a different one. Regex."),
         placeholder="^(firefox)$",
     ),
     MatcherKind(
         key="initial_title",
-        label="Initial title",
-        description="Title at spawn time, before the app updates it. Regex.",
+        label=N_("Initial title"),
+        description=N_("Title at spawn time, before the app updates it. Regex."),
         placeholder="^(Loading…)$",
     ),
     MatcherKind(
         key="xwayland",
-        label="XWayland window",
-        description="Window is running under XWayland.",
+        label=N_("XWayland window"),
+        description=N_("Window is running under XWayland."),
         value_kind="bool",
     ),
     MatcherKind(
         key="float",
-        label="Floating",
-        description="Window is currently floating. Re-evaluates dynamically.",
+        label=N_("Floating"),
+        description=N_("Window is currently floating. Re-evaluates dynamically."),
         value_kind="bool",
     ),
     MatcherKind(
         key="fullscreen",
-        label="Fullscreen",
-        description="Window is currently fullscreen. Re-evaluates dynamically.",
+        label=N_("Fullscreen"),
+        description=N_("Window is currently fullscreen. Re-evaluates dynamically."),
         value_kind="bool",
     ),
     MatcherKind(
         key="pin",
-        label="Pinned",
-        description="Window is pinned across workspaces. Re-evaluates dynamically.",
+        label=N_("Pinned"),
+        description=N_("Window is pinned across workspaces. Re-evaluates dynamically."),
         value_kind="bool",
     ),
     MatcherKind(
         key="focus",
-        label="Focused",
-        description="Window currently has keyboard focus. Re-evaluates dynamically.",
+        label=N_("Focused"),
+        description=N_("Window currently has keyboard focus. Re-evaluates dynamically."),
         value_kind="bool",
     ),
     MatcherKind(
         key="modal",
-        label="Modal",
-        description="Window is a modal dialog (e.g. 'Are you sure?').",
+        label=N_("Modal"),
+        description=N_("Window is a modal dialog (e.g. 'Are you sure?')."),
         value_kind="bool",
     ),
     MatcherKind(
         key="workspace",
-        label="On workspace",
-        description="Window is on a specific workspace.",
+        label=N_("On workspace"),
+        description=N_("Window is on a specific workspace."),
         value_kind="text",
         placeholder="1",
     ),
     MatcherKind(
         key="tag",
-        label="Tag",
-        description="Window has a specific tag.",
+        label=N_("Tag"),
+        description=N_("Window has a specific tag."),
         value_kind="text",
         placeholder="my-tag",
     ),
@@ -636,8 +643,8 @@ MATCHER_KINDS_BY_KEY: dict[str, MatcherKind] = {m.key: m for m in MATCHER_KINDS}
 
 CUSTOM_MATCHER_KIND: MatcherKind = MatcherKind(
     key="__custom__",
-    label="Custom matcher…",
-    description="Any other Hyprland matcher key, including future additions.",
+    label=N_("Custom matcher…"),
+    description=N_("Any other Hyprland matcher key, including future additions."),
     value_kind="text",
     placeholder="match:key value",
 )

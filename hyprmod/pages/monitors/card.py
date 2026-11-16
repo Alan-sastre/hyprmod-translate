@@ -12,6 +12,7 @@ from hyprland_monitors.monitors import (
     parse_mode,
 )
 
+from hyprmod.i18n import N_, _
 from hyprmod.ui import RowActions
 from hyprmod.ui.signals import SignalBlocker
 
@@ -56,8 +57,8 @@ HDR_SLIDER_SPECS = (
     # 0.5 is the community recommended starting point
     _HdrSliderSpec(
         field="sdr_brightness",
-        title="SDR Brightness",
-        subtitle="Brightness for SDR content in HDR mode",
+        title=N_("SDR Brightness"),
+        subtitle=N_("Brightness for SDR content in HDR mode"),
         default=0.5,
         minimum=SDR_VALUE_MIN,
         maximum=SDR_VALUE_MAX,
@@ -68,8 +69,8 @@ HDR_SLIDER_SPECS = (
     ),
     _HdrSliderSpec(
         field="sdr_saturation",
-        title="SDR Saturation",
-        subtitle="Saturation for SDR content in HDR mode",
+        title=N_("SDR Saturation"),
+        subtitle=N_("Saturation for SDR content in HDR mode"),
         default=SDR_VALUE_DEFAULT,
         minimum=SDR_VALUE_MIN,
         maximum=SDR_VALUE_MAX,
@@ -79,8 +80,8 @@ HDR_SLIDER_SPECS = (
     ),
     _HdrSliderSpec(
         field="sdr_min_luminance",
-        title="SDR Min Luminance",
-        subtitle="Minimum luminance for SDR to HDR mapping",
+        title=N_("SDR Min Luminance"),
+        subtitle=N_("Minimum luminance for SDR to HDR mapping"),
         default=0.0,
         minimum=0.0,
         maximum=1.0,
@@ -91,8 +92,8 @@ HDR_SLIDER_SPECS = (
     ),
     _HdrSliderSpec(
         field="sdr_max_luminance",
-        title="SDR Max Luminance",
-        subtitle="Maximum luminance for SDR content",
+        title=N_("SDR Max Luminance"),
+        subtitle=N_("Maximum luminance for SDR content"),
         default=800.0,
         minimum=0.0,
         maximum=2000.0,
@@ -103,8 +104,8 @@ HDR_SLIDER_SPECS = (
     ),
     _HdrSliderSpec(
         field="min_luminance",
-        title="HDR Min Luminance",
-        subtitle="Minimum luminance for HDR output",
+        title=N_("HDR Min Luminance"),
+        subtitle=N_("Minimum luminance for HDR output"),
         default=0.0,
         minimum=0.0,
         maximum=1.0,
@@ -115,8 +116,8 @@ HDR_SLIDER_SPECS = (
     ),
     _HdrSliderSpec(
         field="max_luminance",
-        title="HDR Max Luminance",
-        subtitle="Maximum luminance for HDR output",
+        title=N_("HDR Max Luminance"),
+        subtitle=N_("Maximum luminance for HDR output"),
         default=800.0,
         minimum=0.0,
         maximum=2000.0,
@@ -127,8 +128,8 @@ HDR_SLIDER_SPECS = (
     ),
     _HdrSliderSpec(
         field="max_avg_luminance",
-        title="Max Avg Luminance",
-        subtitle="Monitor maximum average luminance",
+        title=N_("Max Avg Luminance"),
+        subtitle=N_("Monitor maximum average luminance"),
         default=500.0,
         minimum=0.0,
         maximum=2000.0,
@@ -277,7 +278,7 @@ class MonitorCard(Gtk.Box):
         badges_box.set_valign(Gtk.Align.CENTER)
         has_caps = any(self._caps.get(k) for k in ("hdr", "ten_bit", "vrr"))
         if has_caps:
-            supports_label = Gtk.Label(label="Supports:")
+            supports_label = Gtk.Label(label=_("Supports:"))
             supports_label.add_css_class("caption")
             supports_label.add_css_class("dim-label")
             badges_box.append(supports_label)
@@ -303,14 +304,14 @@ class MonitorCard(Gtk.Box):
 
         self._discard_btn = Gtk.Button(icon_name="edit-undo-symbolic")
         self._discard_btn.set_valign(Gtk.Align.CENTER)
-        self._discard_btn.set_tooltip_text("Discard changes")
+        self._discard_btn.set_tooltip_text(_("Discard changes"))
         self._discard_btn.add_css_class("flat")
         self._discard_btn.connect("clicked", self._on_discard_clicked)
         self._actions_box.append(self._discard_btn)
 
         self._remove_btn = Gtk.Button(icon_name="user-trash-symbolic")
         self._remove_btn.set_valign(Gtk.Align.CENTER)
-        self._remove_btn.set_tooltip_text("Remove override")
+        self._remove_btn.set_tooltip_text(_("Remove override"))
         self._remove_btn.add_css_class("flat")
         self._remove_btn.set_visible(False)
         self._remove_btn.connect("clicked", self._on_remove_clicked)
@@ -320,7 +321,7 @@ class MonitorCard(Gtk.Box):
 
         header_box.append(self._actions_box)
 
-        self._managed_badge = Gtk.Label(label="Managed")
+        self._managed_badge = Gtk.Label(label=_("Managed"))
         self._managed_badge.add_css_class("caption")
         self._managed_badge.add_css_class("monitor-managed-badge")
         self._managed_badge.set_visible(False)
@@ -352,8 +353,8 @@ class MonitorCard(Gtk.Box):
         modes = monitor.available_modes
         mode_labels = [m.replace("Hz", " Hz") for m in modes]
         self._mode_row = Adw.ComboRow(
-            title="Resolution",
-            subtitle="Resolution and refresh rate",
+            title=_("Resolution"),
+            subtitle=_("Resolution and refresh rate"),
             model=Gtk.StringList.new(mode_labels),
         )
         best_idx = 0
@@ -377,8 +378,8 @@ class MonitorCard(Gtk.Box):
             self._valid_scales = [ScaleOption(1.00, "1.00")]
         scale_labels = [label for _, label in self._valid_scales]
         self._scale_row = Adw.ComboRow(
-            title="Scale",
-            subtitle="Display scaling factor",
+            title=_("Scale"),
+            subtitle=_("Display scaling factor"),
             model=Gtk.StringList.new(scale_labels),
         )
         self._scale_row.set_selected(nearest_scale_index(self._valid_scales, monitor.scale))
@@ -388,8 +389,8 @@ class MonitorCard(Gtk.Box):
 
         transform_labels = list(TRANSFORMS.values())
         self._transform_row = Adw.ComboRow(
-            title="Transform",
-            subtitle="Screen rotation",
+            title=_("Transform"),
+            subtitle=_("Screen rotation"),
             model=Gtk.StringList.new(transform_labels),
         )
         self._transform_row.set_selected(monitor.transform)
@@ -410,7 +411,7 @@ class MonitorCard(Gtk.Box):
 
         advanced_group = Adw.PreferencesGroup()
         advanced_group.set_margin_top(12)
-        self._advanced_expander = Adw.ExpanderRow(title="Advanced")
+        self._advanced_expander = Adw.ExpanderRow(title=_("Advanced"))
         advanced_group.add(self._advanced_expander)
 
         # Position
@@ -437,7 +438,7 @@ class MonitorCard(Gtk.Box):
         )
         self._pos_y.set_valign(Gtk.Align.CENTER)
 
-        self._pos_row = pos_row = Adw.ActionRow(title="Position")
+        self._pos_row = pos_row = Adw.ActionRow(title=_("Position"))
         for label_text, widget, margin_start, margin_end in [
             ("X", self._pos_x, 0, 4),
             ("Y", self._pos_y, 12, 4),
@@ -462,11 +463,11 @@ class MonitorCard(Gtk.Box):
             pos_row.set_visible(False)
 
         # Mirror
-        mirror_labels = ["Off"] + [f"{name} \u2014 {label}" for name, label in self._mirror_choices]
+        mirror_labels = ["Off"] + [f"{name} - {label}" for name, label in self._mirror_choices]
         self._mirror_values: list[str | None] = [None] + [name for name, _ in self._mirror_choices]
         self._mirror_row = Adw.ComboRow(
-            title="Mirror",
-            subtitle="Clone another monitor's content",
+            title=_("Mirror"),
+            subtitle=_("Clone another monitor's content"),
             model=Gtk.StringList.new(mirror_labels),
         )
         current_idx = 0
@@ -486,13 +487,15 @@ class MonitorCard(Gtk.Box):
         # Identify by description — survives moving the monitor between ports.
         # Use ActionRow + manual Switch (rather than SwitchRow) so the warning
         # icon sits *before* the switch and the switch stays flush right.
-        self._identify_row = Adw.ActionRow(title="Identify by description")
+        self._identify_row = Adw.ActionRow(title=_("Identify by description"))
         self._identify_warning = Gtk.Image.new_from_icon_name("dialog-warning-symbolic")
         self._identify_warning.set_valign(Gtk.Align.CENTER)
         self._identify_warning.add_css_class("warning")
         self._identify_warning.set_tooltip_text(
-            "Another connected monitor matches the same description prefix — "
-            "Hyprland may apply this config to the wrong monitor"
+            _(
+                "Another connected monitor matches the same description prefix - "
+                "Hyprland may apply this config to the wrong monitor"
+            )
         )
         self._identify_row.add_suffix(self._identify_warning)
         self._identify_switch = Gtk.Switch(valign=Gtk.Align.CENTER)
@@ -599,9 +602,9 @@ class MonitorCard(Gtk.Box):
           user can toggle it off), warning icon visible explaining the ambiguity
         """
         if not mon.description:
-            self._identify_row.set_subtitle("Description not reported by this monitor")
+            self._identify_row.set_subtitle(_("Description not reported by this monitor"))
             self._identify_row.set_sensitive(False)
-            self._identify_row.set_tooltip_text("This monitor does not report a description")
+            self._identify_row.set_tooltip_text(_("This monitor does not report a description"))
             self._identify_warning.set_visible(False)
             return
 
@@ -616,7 +619,9 @@ class MonitorCard(Gtk.Box):
             self._identify_warning.set_visible(False)
         elif on:
             self._identify_row.set_subtitle(
-                f"{match_text} — ambiguous, another monitor matches the same prefix"
+                _("{match} - ambiguous, another monitor matches the same prefix").format(
+                    match=match_text
+                )
             )
             self._identify_row.set_sensitive(True)
             self._identify_row.set_tooltip_text(None)
@@ -625,7 +630,7 @@ class MonitorCard(Gtk.Box):
             self._identify_row.set_subtitle(match_text)
             self._identify_row.set_sensitive(False)
             self._identify_row.set_tooltip_text(
-                "Another connected monitor shares the same description prefix"
+                _("Another connected monitor shares the same description prefix")
             )
             self._identify_warning.set_visible(False)
 
@@ -659,10 +664,10 @@ class MonitorCard(Gtk.Box):
         if not self._caps.get("hdr"):
             return None
 
-        row = Adw.ActionRow(title="Safe Defaults", subtitle="Restore conservative HDR values")
+        row = Adw.ActionRow(title=_("Safe Defaults"), subtitle=_("Restore conservative HDR values"))
         button = Gtk.Button(icon_name="edit-undo-symbolic")
         button.set_valign(Gtk.Align.CENTER)
-        button.set_tooltip_text("Apply safe defaults")
+        button.set_tooltip_text(_("Apply safe defaults"))
         button.add_css_class("flat")
         row.add_suffix(button)
         self._signals.connect(button, "clicked", self._on_hdr_reset_clicked)
@@ -681,7 +686,7 @@ class MonitorCard(Gtk.Box):
         rows: list[Adw.ActionRow] = []
         for spec in self._hdr_specs:
             value = _parse_hdr_value(getattr(monitor, spec.field), spec.default)
-            row = Adw.ActionRow(title=spec.title, subtitle=spec.subtitle)
+            row = Adw.ActionRow(title=_(spec.title), subtitle=_(spec.subtitle))
             scale = self._make_hdr_slider(spec, value)
             value_label = Gtk.Label(
                 label=_format_hdr_display_value(value, spec),
@@ -713,7 +718,9 @@ class MonitorCard(Gtk.Box):
         button.set_child(icon)
         button.set_valign(Gtk.Align.CENTER)
         button.set_active(False)
-        button.set_tooltip_text(f"Lock {spec.title} with {peer.title}")
+        button.set_tooltip_text(
+            _("Lock {field} with {peer}").format(field=_(spec.title), peer=_(peer.title))
+        )
         button.add_css_class("flat")
         self._hdr_lock_buttons[spec.field] = button
         self._hdr_lock_icons[spec.field] = icon

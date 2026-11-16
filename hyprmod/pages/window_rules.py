@@ -98,6 +98,7 @@ from hyprmod.core.window_rules import (
     serialize,
     summarize_rule,
 )
+from hyprmod.i18n import _, ngettext
 from hyprmod.pages.section import SavedListSectionPage
 from hyprmod.ui import (
     confirm,
@@ -184,11 +185,13 @@ class WindowRulesPage(SavedListSectionPage[WindowRule]):
         page_header = header or Adw.HeaderBar()
 
         add_btn = Gtk.Button(icon_name="list-add-symbolic")
-        add_btn.set_tooltip_text("Add window rule")
+        add_btn.set_tooltip_text(_("Add window rule"))
         add_btn.connect("clicked", lambda _b: self._on_add())
         page_header.pack_start(add_btn)
 
-        toolbar_view, _, self._content_box, self._scrolled = make_page_layout(header=page_header)
+        toolbar_view, _toolbar_view_unused, self._content_box, self._scrolled = make_page_layout(
+            header=page_header
+        )
 
         self._rebuild_list()
         return toolbar_view
@@ -204,10 +207,12 @@ class WindowRulesPage(SavedListSectionPage[WindowRule]):
         currently running).
         """
         return EmptyState(
-            title="No Window Rules",
+            title=_("No Window Rules"),
             description=(
-                "Make Hyprland treat specific windows differently — pin them, "
-                "set opacity, open on a workspace, and more."
+                _(
+                    "Make Hyprland treat specific windows differently - pin them, "
+                    "set opacity, open on a workspace, and more."
+                )
             ),
             icon_name=WINDOW_RULES_ICON,
             primary_action=("Pick from Open Window", self._on_pick_window),
@@ -217,9 +222,11 @@ class WindowRulesPage(SavedListSectionPage[WindowRule]):
     def _build_order_hint(self) -> Gtk.Widget:
         """Inline note: explains that rule order matters and how to reorder."""
         return make_inline_hint(
-            "Rules are evaluated top to bottom. When two rules match the "
-            "same window, the lower one wins. Reorder with Alt+↑ / Alt+↓ "
-            "on a focused row."
+            _(
+                "Rules are evaluated top to bottom. When two rules match the "
+                "same window, the lower one wins. Reorder with Alt+↑ / Alt+↓ "
+                "on a focused row."
+            )
         )
 
     # Group + deleted-row + external-section rendering uses the base
@@ -244,9 +251,11 @@ class WindowRulesPage(SavedListSectionPage[WindowRule]):
     def _build_external_hint(self) -> Gtk.Widget:
         """Inline note explaining that the rules below are read-only."""
         return make_inline_hint(
-            "Rules below come from your hyprland.conf or its sourced files. "
-            "Edit those files directly to change them — hyprmod doesn't "
-            "manage rules outside its own file.",
+            _(
+                "Rules below come from your hyprland.conf or its sourced files. "
+                "Edit those files directly to change them - hyprmod doesn't "
+                "manage rules outside its own file."
+            ),
             icon_name="changes-prevent-symbolic",
         )
 
@@ -260,7 +269,7 @@ class WindowRulesPage(SavedListSectionPage[WindowRule]):
         # (see this module's docstring).
         return self._make_readonly_external_row(
             title=title,
-            subtitle=f"{matchers_summary}  ·  line {ext.lineno}",
+            subtitle=f"{matchers_summary}  ·  {_('line')} {ext.lineno}",
             source_path=ext.source_path,
             lineno=ext.lineno,
         )
@@ -428,13 +437,17 @@ class WindowRulesPage(SavedListSectionPage[WindowRule]):
         )
         if error is not None:
             self._window.show_bug_toast(
-                f"Couldn't apply to existing windows — {error}",
+                _("Couldn't apply to existing windows: {error}").format(error=error),
                 detail=str(error),
                 timeout=5,
             )
         elif applied > 0:
             self._window.show_toast(
-                f"Applied to {applied} existing window{'s' if applied != 1 else ''}",
+                ngettext(
+                    "Applied to 1 existing window",
+                    "Applied to {n} existing windows",
+                    applied,
+                ).format(n=applied),
                 timeout=2,
             )
 
@@ -462,7 +475,7 @@ class WindowRulesPage(SavedListSectionPage[WindowRule]):
         )
         if error is not None:
             self._window.show_bug_toast(
-                f"Couldn't revert on existing windows — {error}",
+                _("Couldn't revert on existing windows: {error}").format(error=error),
                 detail=str(error),
                 timeout=5,
             )
@@ -503,18 +516,18 @@ class WindowRulesPage(SavedListSectionPage[WindowRule]):
 
         confirm(
             self._window,
-            heading="Apply this rule to HyprMod itself?",
+            heading=_("Apply this rule to HyprMod itself?"),
             body=(
                 f"This rule's matchers also match HyprMod's own window "
                 f"(class {HYPRMOD_APP_ID!r}). Applying it live can "
-                "disrupt this editor — for example, an ‘opacity’ or "
+                "disrupt this editor - for example, an ‘opacity’ or "
                 "‘float’ action would take effect on the window you "
                 "are using right now.\n\n"
                 "‘Save Only’ keeps the rule in your config and applies "
                 "it after the next save+reload. ‘Apply Live’ pushes it "
                 "to the running compositor immediately."
             ),
-            label="Apply Live",
+            label=_("Apply Live"),
             on_confirm=lambda: self._apply_rule_live(rule),
             appearance=Adw.ResponseAppearance.SUGGESTED,
         )

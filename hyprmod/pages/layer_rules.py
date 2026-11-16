@@ -60,6 +60,7 @@ from hyprmod.core.layer_rules import (
     summarize_rule,
 )
 from hyprmod.core.ownership import SavedList
+from hyprmod.i18n import _
 from hyprmod.pages.section import SavedListSectionPage
 from hyprmod.ui import (
     make_inline_hint,
@@ -123,11 +124,13 @@ class LayerRulesPage(SavedListSectionPage[LayerRule]):
         page_header = header or Adw.HeaderBar()
 
         add_btn = Gtk.Button(icon_name="list-add-symbolic")
-        add_btn.set_tooltip_text("Add layer rule")
+        add_btn.set_tooltip_text(_("Add layer rule"))
         add_btn.connect("clicked", lambda _b: self._on_add())
         page_header.pack_start(add_btn)
 
-        toolbar_view, _, self._content_box, self._scrolled = make_page_layout(header=page_header)
+        toolbar_view, _toolbar_view_unused, self._content_box, self._scrolled = make_page_layout(
+            header=page_header
+        )
 
         self._rebuild_list()
         return toolbar_view
@@ -138,16 +141,18 @@ class LayerRulesPage(SavedListSectionPage[LayerRule]):
         """Empty-state page with a single "Add Rule" button.
 
         Unlike the window-rules empty state, there's no "Pick from Open
-        Window" path — ``hyprland-socket`` doesn't expose a layers query,
+        Window" path - ``hyprland-socket`` doesn't expose a layers query,
         and even if it did, the user-recognisable identity for a layer
         surface is its namespace (``waybar``, ``rofi``), not a running
         window the user can point at.
         """
         return EmptyState(
-            title="No Layer Rules",
+            title=_("No Layer Rules"),
             description=(
-                "Tweak how shell surfaces (waybar, notifications, rofi, wallpapers) "
-                "are decorated — backdrop blur, dim-around, animations, render order."
+                _(
+                    "Tweak how shell surfaces (waybar, notifications, rofi, wallpapers) "
+                    "are decorated - backdrop blur, dim-around, animations, render order."
+                )
             ),
             icon_name=LAYER_RULES_ICON,
             primary_action=("Add Rule…", self._on_add),
@@ -156,9 +161,11 @@ class LayerRulesPage(SavedListSectionPage[LayerRule]):
     def _build_order_hint(self) -> Gtk.Widget:
         """Inline note: explains how rule order interacts with ``unset``."""
         return make_inline_hint(
-            "Rules accumulate per surface. ‘unset’ clears every prior rule for the "
-            "matched namespace — place it first when you want to start fresh. "
-            "Reorder with Alt+↑ / Alt+↓ on a focused row."
+            _(
+                "Rules accumulate per surface. ‘unset’ clears every prior rule for the "
+                "matched namespace - place it first when you want to start fresh. "
+                "Reorder with Alt+↑ / Alt+↓ on a focused row."
+            )
         )
 
     # Group + deleted-row + external-section rendering uses the base
@@ -183,9 +190,11 @@ class LayerRulesPage(SavedListSectionPage[LayerRule]):
     def _build_external_hint(self) -> Gtk.Widget:
         """Inline note explaining that the rules below are read-only."""
         return make_inline_hint(
-            "Rules below come from your hyprland.conf or its sourced files. "
-            "Edit those files directly to change them — hyprmod doesn't "
-            "manage rules outside its own file.",
+            _(
+                "Rules below come from your hyprland.conf or its sourced files. "
+                "Edit those files directly to change them - hyprmod doesn't "
+                "manage rules outside its own file."
+            ),
             icon_name="changes-prevent-symbolic",
         )
 
@@ -195,7 +204,7 @@ class LayerRulesPage(SavedListSectionPage[LayerRule]):
         # caveat as window rules. Lock-icon-only suffix mirrors that page.
         return self._make_readonly_external_row(
             title=title,
-            subtitle=f"{namespace_summary}  ·  line {ext.lineno}",
+            subtitle=f"{namespace_summary}  ·  {_('line')} {ext.lineno}",
             source_path=ext.source_path,
             lineno=ext.lineno,
         )

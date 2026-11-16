@@ -2,6 +2,7 @@
 
 from gi.repository import Adw, Gtk
 
+from hyprmod.i18n import _
 from hyprmod.ui.managed_row import make_spin_float_row, make_spin_int_row
 from hyprmod.ui.options.base import OptionRow, digits_for_step
 from hyprmod.ui.signals import SignalBlocker
@@ -10,8 +11,8 @@ from hyprmod.ui.signals import SignalBlocker
 class SwitchOptionRow(OptionRow):
     def __init__(self, option, value, on_change, on_reset, on_discard=None):
         row = Adw.SwitchRow(
-            title=option.get("label", option["key"]),
-            subtitle=option.get("description", ""),
+            title=_(option.get("label", option["key"])),
+            subtitle=_(option.get("description", "")),
         )
         super().__init__(row, option, on_change, on_reset, on_discard)
         row.set_active(bool(value))
@@ -28,8 +29,8 @@ class SwitchOptionRow(OptionRow):
 class SpinIntOptionRow(OptionRow):
     def __init__(self, option, value, on_change, on_reset, on_discard=None):
         row, self._spin = make_spin_int_row(
-            option.get("label", option["key"]),
-            subtitle=option.get("description", ""),
+            _(option.get("label", option["key"])),
+            subtitle=_(option.get("description", "")),
             value=int(value) if value is not None else option.get("default", 0),
             lower=option.get("min", 0),
             upper=option.get("max", 9999),
@@ -51,8 +52,8 @@ class SpinFloatOptionRow(OptionRow):
         step = option.get("step", 0.01)
         self._digits = digits_for_step(step)
         row, self._spin = make_spin_float_row(
-            option.get("label", option["key"]),
-            subtitle=option.get("description", ""),
+            _(option.get("label", option["key"])),
+            subtitle=_(option.get("description", "")),
             value=float(value) if value is not None else option.get("default", 0.0),
             lower=option.get("min", 0.0),
             upper=option.get("max", 100.0),
@@ -103,8 +104,8 @@ class Vec2OptionRow(OptionRow):
         self._spin_y.set_valign(Gtk.Align.CENTER)
 
         row = Adw.ActionRow(
-            title=option.get("label", option["key"]),
-            subtitle=option.get("description", ""),
+            title=_(option.get("label", option["key"])),
+            subtitle=_(option.get("description", "")),
         )
         for label_text, widget, margin_start, margin_end in [
             ("X", self._spin_x, 0, 4),

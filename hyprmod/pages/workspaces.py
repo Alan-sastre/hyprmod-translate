@@ -50,6 +50,7 @@ from hyprmod.core.workspaces import (
     serialize,
     summarize_rule,
 )
+from hyprmod.i18n import _
 from hyprmod.pages.section import SavedListSectionPage
 from hyprmod.ui import (
     make_inline_hint,
@@ -108,11 +109,13 @@ class WorkspacesPage(SavedListSectionPage[WorkspaceRule]):
         page_header = header or Adw.HeaderBar()
 
         add_btn = Gtk.Button(icon_name="list-add-symbolic")
-        add_btn.set_tooltip_text("Add workspace rule")
+        add_btn.set_tooltip_text(_("Add workspace rule"))
         add_btn.connect("clicked", lambda _b: self._on_add())
         page_header.pack_start(add_btn)
 
-        toolbar_view, _, self._content_box, self._scrolled = make_page_layout(header=page_header)
+        toolbar_view, _toolbar_view_unused, self._content_box, self._scrolled = make_page_layout(
+            header=page_header
+        )
 
         self._rebuild_list()
         return toolbar_view
@@ -128,11 +131,13 @@ class WorkspacesPage(SavedListSectionPage[WorkspaceRule]):
         to monitor) before they open the dialog.
         """
         return EmptyState(
-            title="No Workspace Rules",
+            title=_("No Workspace Rules"),
             description=(
-                "Pin workspaces to specific monitors, configure persistence, "
-                "override gaps and borders, or run a command when a workspace "
-                "first opens."
+                _(
+                    "Pin workspaces to specific monitors, configure persistence, "
+                    "override gaps and borders, or run a command when a workspace "
+                    "first opens."
+                )
             ),
             icon_name=WORKSPACES_ICON,
             primary_action=("Add Rule…", self._on_add),
@@ -147,8 +152,10 @@ class WorkspacesPage(SavedListSectionPage[WorkspaceRule]):
         rules they thought were active being overridden later.
         """
         return make_inline_hint(
-            "When multiple rules target the same workspace, Hyprland uses the "
-            "last one in the file. Reorder with Alt+↑ / Alt+↓ on a focused row."
+            _(
+                "When multiple rules target the same workspace, Hyprland uses the "
+                "last one in the file. Reorder with Alt+↑ / Alt+↓ on a focused row."
+            )
         )
 
     # ── Pending-changes summarisers ──
@@ -172,9 +179,11 @@ class WorkspacesPage(SavedListSectionPage[WorkspaceRule]):
 
     def _build_external_hint(self) -> Gtk.Widget:
         return make_inline_hint(
-            "Rules below come from your hyprland.conf or its sourced files. "
-            "Edit those files directly to change them — hyprmod doesn't "
-            "manage rules outside its own file.",
+            _(
+                "Rules below come from your hyprland.conf or its sourced files. "
+                "Edit those files directly to change them - hyprmod doesn't "
+                "manage rules outside its own file."
+            ),
             icon_name="changes-prevent-symbolic",
         )
 
@@ -182,7 +191,7 @@ class WorkspacesPage(SavedListSectionPage[WorkspaceRule]):
         title, subtitle = summarize_rule(ext.rule)
         return self._make_readonly_external_row(
             title=title,
-            subtitle=f"{subtitle}  ·  line {ext.lineno}",
+            subtitle=f"{subtitle}  ·  {_('line')} {ext.lineno}",
             source_path=ext.source_path,
             lineno=ext.lineno,
         )
@@ -298,7 +307,7 @@ class WorkspacesPage(SavedListSectionPage[WorkspaceRule]):
     def _monitor_choices(self) -> list[tuple[str, str]]:
         """Live monitors as ``(connector, label)`` pairs for the dialog.
 
-        Label is ``"DP-1 — Dell AW3423DWF"`` when make/model is available
+        Label is ``"DP-1 - Dell AW3423DWF"`` when make/model is available
         and ``"DP-1"`` when it isn't. The connector half is what we save
         into the rule, so the on-disk form stays portable across monitor
         layout changes that swap make/model strings.
@@ -307,7 +316,7 @@ class WorkspacesPage(SavedListSectionPage[WorkspaceRule]):
         result: list[tuple[str, str]] = []
         for m in sorted(monitors, key=lambda mon: mon.name):
             friendly = f"{(m.make or '').strip()} {(m.model or '').strip()}".strip()
-            label = f"{m.name} — {friendly}" if friendly else m.name
+            label = f"{m.name} - {friendly}" if friendly else m.name
             result.append((m.name, label))
         return result
 

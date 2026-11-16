@@ -13,6 +13,7 @@ from hyprland_state import HyprlandState
 
 from hyprmod.core import profiles
 from hyprmod.core.settings import apply_saved_config_path, open_settings
+from hyprmod.i18n import _
 
 
 def _list_profiles() -> int:
@@ -72,7 +73,7 @@ def _cycle_profile(*, forward: bool) -> int:
 def run(argv: list[str]) -> int:
     """Dispatch a recognised CLI command. *argv* excludes the program name."""
     parser = argparse.ArgumentParser(
-        prog="hyprmod", description="Manage Hyprland configuration profiles."
+        prog="hyprmod", description=_("Manage Hyprland configuration profiles.")
     )
     commands = parser.add_subparsers(dest="command", required=True)
 
